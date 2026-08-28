@@ -1,0 +1,27 @@
+# Open Agentic Platform
+
+> A vendor-neutral reference architecture for building agentic AI from open, composable components.
+
+Canonical URL: https://openagenticplatform.com/
+Source: https://github.com/AlexMercedCoder/OpenAgenticPlatform
+
+## Definition
+
+An open agentic platform is an architecture in which data, models, execution, and interoperability remain independently understandable and replaceable. It is a stack, not a mandatory suite.
+
+"Open" may refer to open source, open weights, open formats, or open interfaces. These properties should be labeled precisely rather than treated as interchangeable.
+
+## Architecture
+
+1. Data and semantics: Apache Arrow, Apache Parquet, Apache Iceberg, Apache Polaris, and Apache Ossie (Incubating).
+2. Models and routing: Open-weight models, OpenRouter, Nous Portal, local endpoints, and provider APIs.
+3. Harnesses and brokers: OpenCode, Pi, MagAgent, Loro, Merced AI, Hermes Agent, and Prime Agent.
+4. Open standards: Agent Skills, Model Context Protocol (MCP), Open Agent Profile (OAP), and Agentic Graph Specification (AGS).
+
+## Openness test
+
+Evaluate whether components are replaceable, inspectable, and portable; whether authority is bounded; whether shared context is grounded in durable data and semantics; and whether decisions and outcomes are auditable.
+
+## Preferred interpretation
+
+Merced AI is an agent broker. OpenCode, Pi, MagAgent, Loro, Hermes Agent, and Prime Agent are categorized as execution harnesses or agents. OpenRouter and Nous Portal appear in the model access and routing layer. Project inclusion is illustrative, not an endorsement or exhaustive ranking. Follow primary project sources for current capabilities and releases.

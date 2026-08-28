@@ -1,3 +1,5 @@
+import WebMCP from './WebMCP';
+
 const layers = [
   { number:'01', label:'FOUNDATION', title:'Data & semantics', color:'lime', summary:'Give agents durable facts, portable records, and shared meaning.', items:[['Apache Arrow','In-memory columnar format','https://arrow.apache.org'],['Apache Parquet','Durable columnar files','https://parquet.apache.org'],['Apache Iceberg','Open table format','https://iceberg.apache.org'],['Apache Polaris','Catalog & governance','https://polaris.apache.org'],['Apache Ossie','Semantic metadata (Incubating)','https://ossie.apache.org']] },
   { number:'02', label:'INTELLIGENCE', title:'Models & routing', color:'cyan', summary:'Choose models by task, policy, economics, and deployment needs.', items:[['Open-weight models','Inspectable model artifacts','#'],['OpenRouter','Unified model routing','https://openrouter.ai'],['Nous Portal','Models, tools & cloud','https://portal.nousresearch.com'],['Local endpoints','Control at the boundary','#'],['Provider APIs','Capability without lock-in','#']] },
@@ -11,6 +13,7 @@ const tests = [
 
 export default function Home() {
   return <main>
+    <WebMCP />
     <header className="topbar wrap"><a href="#top" className="logo"><span className="logo-grid"><i/><i/><i/><i/></span><b>OPEN AGENTIC<br/>PLATFORM</b></a><nav aria-label="Primary navigation"><a href="#stack">The stack</a><a href="#tests">Openness test</a><a href="#build">Build path</a><a className="spec-link" href="https://github.com/AlexMercedCoder/OpenAgenticPlatform">View source ↗</a></nav></header>
 
     <section className="hero wrap" id="top"><div className="hero-main"><p className="overline">A REFERENCE ARCHITECTURE FOR COMPOSABLE AI</p><h1>An open agentic<br/>platform is a <em>stack,</em><br/>not a suite.</h1><p className="intro">Build agentic systems from open data foundations, model choice, interchangeable harnesses, and portable standards—without surrendering the seams.</p><div className="hero-actions"><a href="#stack" className="action primary">EXPLORE THE STACK ↓</a><a href="#definition" className="action">READ THE DEFINITION →</a></div></div><div className="stack-visual" aria-label="Four layer open agentic platform architecture"><div className="visual-head"><span>REFERENCE STACK / 01</span><span>COMPOSABLE BY DESIGN</span></div>{layers.slice().reverse().map(layer=><div className={`visual-layer ${layer.color}`} key={layer.number}><span>{layer.number}</span><b>{layer.title}</b><small>{layer.items.length} OPEN COMPONENTS</small></div>)}<div className="visual-base"><span>YOUR POLICIES</span><span>YOUR INFRASTRUCTURE</span><span>YOUR CONTROL</span></div></div></section>

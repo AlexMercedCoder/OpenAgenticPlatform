@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://openagenticplatform.com/sitemap.xml
+Host: openagenticplatform.com

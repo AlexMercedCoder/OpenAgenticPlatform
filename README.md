@@ -11,4 +11,4 @@ npm run lint
 npm run build
 ```
 
-The static-first site uses the OpenAI Sites/Vinext scaffold. The complete phase-one product definition lives in `PRD.md`.
+The static-first site uses the OpenAI Sites/Vinext scaffold. It includes JSON-LD, full sharing and crawler metadata, sitemap and robots routes, `llms.txt`, and read-only WebMCP tools. The complete phase-one product definition lives in `PRD.md`.
