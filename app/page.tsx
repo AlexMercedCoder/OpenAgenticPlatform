@@ -4,6 +4,7 @@ import WebMCP from './WebMCP';
 import { SiteHeader } from './_components/SiteHeader';
 import { NewsletterBand, SiteFooter } from './_components/SiteFooter';
 import { aiBooks } from './_data/books';
+import { kbManifest } from './_data/kb-manifest';
 
 type Component = { name: string; role: string; slug: string; href: string };
 type Layer = { number: string; label: string; title: string; slug: string; color: string; summary: string; items: Component[] };
@@ -63,14 +64,14 @@ const booksStructuredData = {
 
 export default function Home() {
   return <main>
-    <WebMCP />
+    <WebMCP knowledgeBase={kbManifest} />
     <SiteHeader />
 
     <section className="hero wrap" id="top"><div className="hero-main"><p className="overline">A REFERENCE ARCHITECTURE FOR COMPOSABLE AI</p><h1>An open agentic<br/>platform is a <em>stack,</em><br/>not a suite.</h1><p className="intro">Build agentic systems from open data foundations, model choice, interchangeable harnesses, and portable standards, without surrendering the seams.</p><div className="hero-actions"><a href="#stack" className="action primary">EXPLORE THE STACK ↓</a><Link href="/knowledge-base" className="action">READ THE KNOWLEDGE BASE →</Link></div></div><div className="stack-visual" aria-label="Four layer open agentic platform architecture"><div className="visual-head"><span>REFERENCE STACK / 01</span><span>COMPOSABLE BY DESIGN</span></div>{layers.slice().reverse().map(layer=><div className={`visual-layer ${layer.color}`} key={layer.number}><span>{layer.number}</span><b>{layer.title}</b><small>{layer.items.length} OPEN COMPONENTS</small></div>)}<div className="visual-base"><span>YOUR POLICIES</span><span>YOUR INFRASTRUCTURE</span><span>YOUR CONTROL</span></div></div></section>
 
     <section className="definition" id="definition"><div className="wrap definition-grid"><p className="section-label">DEFINITION / 00</p><div><h2>Open components.<br/>Explicit contracts.<br/><em>Operational freedom.</em></h2><p>An open agentic platform is an architecture in which data, models, execution, and interoperability remain independently understandable and replaceable. “Open” may describe source, weights, formats, or interfaces. A trustworthy architecture labels the difference instead of flattening it.</p></div></div></section>
 
-    <section className="stack wrap" id="stack"><div className="section-intro"><p className="section-label">ARCHITECTURE / 01–04</p><div><h2>Four layers.<br/>No mandatory vendor.</h2><p>Each layer answers a different question. Together they turn model capability into durable, governable work. Every name below has a full explanation in the <Link href="/knowledge-base">knowledge base</Link>.</p></div></div><div className="layer-list">{layers.map(layer=><article className={`layer-card ${layer.color}`} key={layer.number}><div className="layer-title"><span>{layer.number} / {layer.label}</span><h3>{layer.title}</h3><p>{layer.summary}</p><Link className="layer-kb-link" href={`/knowledge-base/${layer.slug}`}>Read the layer explainer →</Link></div><div className="component-list">{layer.items.map((item)=><Link href={`/knowledge-base/${item.slug}`} key={item.name}><b>{item.name}</b><span>{item.role}</span><i>→</i></Link>)}</div></article>)}</div></section>
+    <section className="stack wrap" id="stack"><div className="section-intro"><p className="section-label">ARCHITECTURE / 01 TO 04</p><div><h2>Four layers.<br/>No mandatory vendor.</h2><p>Each layer answers a different question. Together they turn model capability into durable, governable work. Every name below has a full explanation in the <Link href="/knowledge-base">knowledge base</Link>.</p></div></div><div className="layer-list">{layers.map(layer=><article className={`layer-card ${layer.color}`} key={layer.number}><div className="layer-title"><span>{layer.number} / {layer.label}</span><h3>{layer.title}</h3><p>{layer.summary}</p><Link className="layer-kb-link" href={`/knowledge-base/${layer.slug}`}>Read the layer explainer →</Link></div><div className="component-list">{layer.items.map((item)=><Link href={`/knowledge-base/${item.slug}`} key={item.name}><b>{item.name}</b><span>{item.role}</span><i>→</i></Link>)}</div></article>)}</div></section>
 
     <section className="openness" id="tests"><div className="wrap"><div className="section-intro light"><p className="section-label">THE OPENNESS TEST / 05</p><div><h2>Open is a property<br/>of the whole system.</h2><p>A pile of open-source parts can still produce a closed architecture. Test the relationships as carefully as the licenses.</p></div></div><div className="test-grid">{tests.map(([title,body,slug],index)=><article key={title}><span>{String(index+1).padStart(2,'0')}</span><h3><Link href={`/knowledge-base/${slug}`}>{title}</Link></h3><p>{body}</p></article>)}</div></div></section>
 

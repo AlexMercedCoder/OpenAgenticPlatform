@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import WebMCP from '../WebMCP';
+import { kbManifest } from '../_data/kb-manifest';
 import { SiteHeader } from '../_components/SiteHeader';
 import { NewsletterBand, SiteFooter } from '../_components/SiteFooter';
 import { articles, conceptArticles, glossaryArticles, layerArticles, technologiesFor } from './_content';
@@ -55,6 +57,7 @@ const structuredData = {
 export default function KnowledgeBaseIndex() {
   return (
     <main>
+      <WebMCP knowledgeBase={kbManifest} />
       <SiteHeader />
 
       <section className="kb-hero wrap">

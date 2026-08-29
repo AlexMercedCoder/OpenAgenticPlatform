@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import WebMCP from '../../WebMCP';
+import { kbManifest } from '../../_data/kb-manifest';
 import { SiteHeader } from '../../_components/SiteHeader';
 import { NewsletterBand, SiteFooter } from '../../_components/SiteFooter';
 import { articles, articlesBySlug } from '../_content';
@@ -79,6 +81,7 @@ export default async function KnowledgeBaseArticle({ params }: { params: Promise
 
   return (
     <main>
+      <WebMCP knowledgeBase={kbManifest} />
       <SiteHeader />
 
       <article className="kb-article">

@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import { aiBooks } from './_data/books';
+import type { KbEntry } from './_data/kb-manifest';
 
 type ToolDefinition = {
   name: string;
@@ -22,7 +23,7 @@ declare global {
 
 const noInput = { type: 'object', properties: {}, additionalProperties: false };
 
-export default function WebMCP() {
+export default function WebMCP({ knowledgeBase = [] }: { knowledgeBase?: KbEntry[] }) {
   useEffect(() => {
     const context = document.modelContext;
     if (!context) return;
@@ -79,6 +80,110 @@ export default function WebMCP() {
         annotations: { readOnlyHint: true, untrustedContentHint: false },
       },
       {
+        name: 'list_knowledge_base_articles',
+        title: 'List knowledge base articles',
+        description: 'Returns every reference page in the Open Agentic Platform knowledge base with its title, category, one-line summary, and canonical URL. Use this to find the right page before fetching one.',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            kind: { type: 'string', enum: ['layer', 'technology', 'concept', 'glossary'], description: 'Optional filter: layer overviews, individual technologies, openness-test properties, or reference pages.' },
+            layer: { type: 'string', description: 'Optional filter by layer slug, for example data-and-semantics or open-standards.' },
+          },
+          additionalProperties: false,
+        },
+        execute: async (input) => {
+          const kind = typeof input.kind === 'string' ? input.kind : undefined;
+          const layer = typeof input.layer === 'string' ? input.layer : undefined;
+          const matches = knowledgeBase.filter((entry) => (
+            (!kind || entry.kind === kind) && (!layer || entry.layer === layer)
+          ));
+          return {
+            count: matches.length,
+            index: 'https://openagenticplatform.com/knowledge-base',
+            articles: matches.map(({ slug, title, kind: entryKind, layer: entryLayer, summary, url }) => ({
+              slug, title, kind: entryKind, layer: entryLayer, summary, url,
+            })),
+          };
+        },
+        annotations: { readOnlyHint: true, untrustedContentHint: false },
+      },
+      {
+        name: 'get_knowledge_base_article',
+        title: 'Get a knowledge base article outline',
+        description: 'Returns the summary, section outline, keywords, and primary sources for one knowledge base page. Fetch the returned URL for the full text.',
+        inputSchema: {
+          type: 'object',
+          properties: { slug: { type: 'string', description: 'Article slug, for example apache-iceberg or model-context-protocol.' } },
+          required: ['slug'],
+          additionalProperties: false,
+        },
+        execute: async (input) => {
+          const slug = typeof input.slug === 'string' ? input.slug : '';
+          const entry = knowledgeBase.find((item) => item.slug === slug);
+          if (!entry) {
+            return {
+              found: false,
+              message: `No article with slug "${slug}".`,
+              availableSlugs: knowledgeBase.map((item) => item.slug),
+            };
+          }
+          return { found: true, ...entry };
+        },
+        annotations: { readOnlyHint: true, untrustedContentHint: false },
+      },
+      {
+        name: 'search_knowledge_base',
+        title: 'Search the knowledge base',
+        description: 'Finds knowledge base pages whose title, summary, keywords, or section headings match a query. Returns ranked matches with canonical URLs.',
+        inputSchema: {
+          type: 'object',
+          properties: { query: { type: 'string', description: 'Words to search for, for example "credential vending" or "prompt injection".' } },
+          required: ['query'],
+          additionalProperties: false,
+        },
+        execute: async (input) => {
+          const query = (typeof input.query === 'string' ? input.query : '').toLowerCase().trim();
+          const terms = query.split(/\s+/).filter(Boolean);
+          if (!terms.length) return { count: 0, matches: [] };
+          const scored = knowledgeBase.map((entry) => {
+            const title = entry.title.toLowerCase();
+            const summary = entry.summary.toLowerCase();
+            const keywords = entry.keywords.join(' ').toLowerCase();
+            const sections = entry.sections.join(' ').toLowerCase();
+            let score = 0;
+            for (const term of terms) {
+              if (title.includes(term)) score += 8;
+              if (keywords.includes(term)) score += 4;
+              if (summary.includes(term)) score += 3;
+              if (sections.includes(term)) score += 2;
+            }
+            return { entry, score };
+          }).filter((item) => item.score > 0).sort((a, b) => b.score - a.score).slice(0, 8);
+          return {
+            query,
+            count: scored.length,
+            matches: scored.map(({ entry, score }) => ({
+              slug: entry.slug, title: entry.title, kind: entry.kind, summary: entry.summary, url: entry.url, score,
+            })),
+          };
+        },
+        annotations: { readOnlyHint: true, untrustedContentHint: false },
+      },
+      {
+        name: 'get_alex_merced_newsletters',
+        title: 'Get Alex Merced newsletters',
+        description: 'Returns the two free weekly newsletters Alex Merced publishes and where to subscribe.',
+        inputSchema: noInput,
+        execute: async () => ({
+          subscribeUrl: 'https://amdatalakehouse.substack.com',
+          editions: [
+            { day: 'Thursday', title: 'AI newsletter', covers: 'Model releases, agent tooling, protocols, and AI infrastructure from the past week.' },
+            { day: 'Friday', title: 'Apache lakehouse newsletter', covers: 'What moved on the Apache Iceberg, Polaris, Arrow, and Parquet dev lists.' },
+          ],
+        }),
+        annotations: { readOnlyHint: true, untrustedContentHint: false },
+      },
+      {
         name: 'list_alex_merced_ai_books',
         title: 'List Alex Merced AI books',
         description: 'Returns the nonfiction AI and agentic-systems books featured on OpenAgenticPlatform.com.',
@@ -94,7 +199,7 @@ export default function WebMCP() {
 
     Promise.allSettled(tools.map((tool) => context.registerTool(tool, { signal: controller.signal })));
     return () => controller.abort();
-  }, []);
+  }, [knowledgeBase]);
 
   return null;
 }

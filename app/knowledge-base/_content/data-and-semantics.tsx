@@ -337,8 +337,8 @@ function Body() {
 
       <h2 id="sequence">A build sequence that works</h2>
       <p>
-        Teams that get this layer right tend to move in roughly the same order, and it is not the order that feels
-        most exciting.
+        Teams that get this layer right tend to move in roughly the same order, and it is not the order most teams
+        reach for first.
       </p>
       <ol>
         <li>
