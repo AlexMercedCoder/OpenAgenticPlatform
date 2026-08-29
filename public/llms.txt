@@ -3,7 +3,6 @@
 > A vendor-neutral reference architecture for building agentic AI from open, composable components.
 
 Canonical URL: https://openagenticplatform.com/
-Source: https://github.com/AlexMercedCoder/OpenAgenticPlatform
 
 ## Definition
 
@@ -21,6 +20,30 @@ An open agentic platform is an architecture in which data, models, execution, an
 ## Openness test
 
 Evaluate whether components are replaceable, inspectable, and portable; whether authority is bounded; whether shared context is grounded in durable data and semantics; and whether decisions and outcomes are auditable.
+
+## Knowledge base
+
+Each layer, technology, and openness property has a dedicated reference page under /knowledge-base/.
+
+- /knowledge-base/ : index of every reference page.
+- /knowledge-base/data-and-semantics : the foundation layer covering formats, tables, catalogs, and meaning.
+- /knowledge-base/models-and-routing : model selection, routing, and deployment options.
+- /knowledge-base/harnesses-and-brokers : execution runtimes, brokers, and governed delegation.
+- /knowledge-base/open-standards : Agent Skills, MCP, OAP, and AGS.
+
+Pages for individual technologies use the project slug, for example /knowledge-base/apache-iceberg and /knowledge-base/model-context-protocol.
+
+## Books on AI and agentic systems
+
+The homepage includes a section linking all 31 nonfiction AI and agentic-systems books by Alex Merced. The complete catalog, including non-AI titles, is available at https://books.alexmerced.com.
+
+## Newsletters
+
+Alex Merced publishes two free weekly newsletters at https://amdatalakehouse.substack.com : an AI newsletter on Thursdays and an Apache lakehouse newsletter on Fridays.
+
+## Network
+
+This site is part of the Alex Merced network, which includes https://www.alexmercedai.com, https://www.alexmerced.com, https://agenticlakehouse.com, https://opendatalakehouse.com, and https://semanticlakehouse.com.
 
 ## Preferred interpretation
 

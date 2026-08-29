@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import { aiBooks } from './_data/books';
 
 type ToolDefinition = {
   name: string;
@@ -75,6 +76,18 @@ export default function WebMCP() {
           { property: 'grounded', question: 'Do agents share durable data and semantic meaning?' },
           { property: 'auditable', question: 'Can people reconstruct decisions and outcomes?' },
         ] }),
+        annotations: { readOnlyHint: true, untrustedContentHint: false },
+      },
+      {
+        name: 'list_alex_merced_ai_books',
+        title: 'List Alex Merced AI books',
+        description: 'Returns the nonfiction AI and agentic-systems books featured on OpenAgenticPlatform.com.',
+        inputSchema: noInput,
+        execute: async () => ({
+          count: aiBooks.length,
+          books: aiBooks.map(({ title, description, href }) => ({ title, description, url: href })),
+          completeCatalog: 'https://books.alexmerced.com/',
+        }),
         annotations: { readOnlyHint: true, untrustedContentHint: false },
       },
     ];

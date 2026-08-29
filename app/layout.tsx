@@ -24,7 +24,7 @@ const structuredData = {
   '@context': 'https://schema.org',
   '@graph': [
     { '@type': 'WebSite', '@id': 'https://openagenticplatform.com/#website', name: 'Open Agentic Platform', url: 'https://openagenticplatform.com/', description: 'A vendor-neutral reference architecture for composable agentic AI.', inLanguage: 'en-US' },
-    { '@type': 'TechArticle', '@id': 'https://openagenticplatform.com/#reference-architecture', headline: 'Open Agentic Platform Reference Architecture', description: 'A four-layer architecture spanning data and semantics, models and routing, harnesses and brokers, and open standards.', mainEntityOfPage: { '@id': 'https://openagenticplatform.com/#website' }, author: { '@type': 'Person', name: 'Alex Merced', url: 'https://www.alexmerced.com' }, dateModified: '2026-08-28', inLanguage: 'en-US' },
+    { '@type': 'TechArticle', '@id': 'https://openagenticplatform.com/#reference-architecture', headline: 'Open Agentic Platform Reference Architecture', description: 'A four-layer architecture spanning data and semantics, models and routing, harnesses and brokers, and open standards.', mainEntityOfPage: { '@id': 'https://openagenticplatform.com/#website' }, author: { '@type': 'Person', name: 'Alex Merced', url: 'https://www.alexmerced.com' }, dateModified: '2026-08-29', inLanguage: 'en-US' },
     { '@type': 'ItemList', '@id': 'https://openagenticplatform.com/#layers', name: 'Open agentic platform layers', numberOfItems: 4, itemListElement: ['Data and semantics', 'Models and routing', 'Harnesses and brokers', 'Open standards'].map((name, index) => ({ '@type': 'ListItem', position: index + 1, name })) },
   ],
 };

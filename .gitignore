@@ -33,6 +33,7 @@ yarn-error.log*
 .vercel
 .netlify
 next-env.d.ts
+*.tsbuildinfo
 /dist/
 /.wrangler/
 /outputs/
