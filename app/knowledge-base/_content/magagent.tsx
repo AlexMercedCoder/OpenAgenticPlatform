@@ -19,6 +19,7 @@ export const article: Article = {
     { id: 'graphs', label: 'Agentic graphs for planned work' },
     { id: 'sandboxes', label: 'Sandboxes and boundaries' },
     { id: 'background', label: 'Background work and the daemon' },
+    { id: 'run-center', label: 'Operating surfaces at 1.0' },
     { id: 'evals', label: 'Evaluation as a built-in concern' },
     { id: 'agentic-relevance', label: 'Where it fits in an open stack' },
     { id: 'when-to-choose', label: 'When it fits' },
@@ -43,7 +44,8 @@ function Body() {
     <>
       <h2 id="what-it-is">What it is</h2>
       <p>
-        MagAgent is a terminal-native agent framework written in Python and licensed under Apache 2.0. It handles
+        MagAgent is a terminal-native agent framework written in Python and licensed under Apache 2.0, at version
+        1.0.0 since August 2026. It handles
         coding and general productivity work: reading and editing files, running commands, searching the web,
         querying databases, generating documents, and orchestrating multi-step tasks.
       </p>
@@ -244,6 +246,32 @@ function Body() {
         answers in a terminal and non-obvious answers over a gateway.
       </p>
 
+      <h2 id="run-center">Operating surfaces at 1.0</h2>
+      <p>
+        The 1.0 release added a local web interface built around a run center: chat runs, graph history, and durable
+        execution tasks in one view, with pause, resume, cancel, and retry controls, completion summaries, and
+        scheduled graph runs.
+      </p>
+      <p>
+        This is worth noting in a vendor-neutral reference because it is a pattern rather than a product feature.
+        Several harnesses added something similar in the same period, and the reason is structural. Once a harness
+        can queue background work, the absence of a way to observe and interrupt that work becomes the limiting
+        factor on how much you are willing to delegate. A trace you read afterwards tells you what happened. A run
+        view tells you what is happening, which is what a person needs in order to stop it.
+      </p>
+      <p>
+        The accompanying design constraint is the more transferable lesson. Adding a workspace UI to an agent
+        harness creates an obvious risk: the UI becomes a second path to capability that bypasses whatever bounds
+        the agent itself. MagAgent&apos;s answer is confinement, meaning the UI operates within the project path,
+        with bounded previews, uploads, context selection, and output, a shell-free command console, loopback-only
+        binding, token and CSRF protection, and explicit confirmation on destructive actions.
+      </p>
+      <p>
+        An extensions view lists plugins, discovered skills, configured protocol server names, and tool-backend
+        readiness without returning credentials. Reporting what is configured while withholding the secrets is the
+        correct shape for an inventory surface, and it is a useful thing to check for in any harness offering one.
+      </p>
+
       <h2 id="evals">Evaluation as a built-in concern</h2>
       <p>
         MagAgent includes isolated evaluation suites with independent validators, timing and token metrics, and
@@ -299,7 +327,7 @@ function Body() {
       <ul>
         <li><b>Memory needs curation.</b> A graph that accumulates everything degrades recall. Explicit promotion is the mechanism, and someone has to use it.</li>
         <li><b>Memory is a data store.</b> Whatever an agent learns about a project is written down, including anything sensitive it encountered. Treat the memory repository with the same care as the code.</li>
-        <li><b>Pre-1.0 surfaces move.</b> The project is approaching 1.0 and some integration surfaces are still stabilizing. Check the roadmap for what is settled.</li>
+        <li><b>1.0 is recent.</b> MagAgent reached 1.0.0 in August 2026. Its committed interfaces are settled, and the local web UI is the newest surface and the one most likely to keep changing.</li>
         <li><b>Shell access is the boundary question.</b> As with any capable harness, running commands means the agent can do what the user can, unless sandboxed.</li>
         <li><b>Breadth has a cost.</b> A large tool surface means tool selection quality matters. Scoping tools per profile is the mitigation, and it has to be used.</li>
         <li><b>Language servers need working project setup.</b> The symbol tooling is only as good as the project configuration underneath it.</li>

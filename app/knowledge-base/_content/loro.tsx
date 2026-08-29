@@ -20,6 +20,7 @@ export const article: Article = {
     { id: 'artifacts', label: 'Artifacts with provenance' },
     { id: 'audit', label: 'Audit as a delivery problem' },
     { id: 'standards', label: 'Standards support' },
+    { id: 'workspace', label: 'Workspace surfaces without a second boundary' },
     { id: 'gateways', label: 'Gateways and the widened perimeter' },
     { id: 'agentic-relevance', label: 'Where it fits in an open stack' },
     { id: 'when-to-choose', label: 'When it fits' },
@@ -243,6 +244,36 @@ function Body() {
       <p>
         The pattern across all four is the same: adopt the portable format, and do not let adopting it become a way
         around the authority model.
+      </p>
+
+      <h2 id="workspace">Workspace surfaces without a second boundary</h2>
+      <p>
+        Recent releases added a desktop workspace around the governed runtime, and the stated constraint is the part
+        worth studying: the web interface is not permitted to become an authority boundary or a general-purpose
+        editor.
+      </p>
+      <p>
+        That constraint is unusual and correct. A local UI attached to a governed harness is the most likely place
+        for the governance to spring a leak, because a UI naturally wants to read files, run commands, and let a
+        person adjust settings. The moment it can do those things outside the policy engine, the policy engine is
+        advisory. Keeping workspace file context bounded, artifact previews authenticated, Git review read-only, and
+        one isolated workspace and policy root per server preserves the property the harness exists to provide.
+      </p>
+      <p>
+        The run center spans conversations and graph executions together, with usage and approval visibility in the
+        same place as the work. Putting approvals where the work is matters more than it sounds: an approval queue
+        a person has to navigate to separately is one they will clear in batches without reading.
+      </p>
+      <p>
+        Group execution arrived in three modes, sequential, parallel, and coordinator, with approvals queued
+        independently per agent. That last detail is the one to copy. A parallel fan-out that pools its approvals
+        into one prompt gives a reviewer no way to tell which agent is asking for what, which converts a control
+        into a formality.
+      </p>
+      <p>
+        There is also an effective inventory of connected protocol servers, extensions, and skills that discloses no
+        credentials. As with any governed system, being able to answer what is actually configured here, on demand,
+        is part of what makes the configuration reviewable.
       </p>
 
       <h2 id="gateways">Gateways and the widened perimeter</h2>

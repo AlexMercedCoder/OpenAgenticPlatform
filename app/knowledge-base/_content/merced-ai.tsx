@@ -17,6 +17,7 @@ export const article: Article = {
     { id: 'profiles-and-bots', label: 'Profiles and bots' },
     { id: 'projection', label: 'Honest projection reports' },
     { id: 'graphs', label: 'Read-only graph planning' },
+    { id: 'telemetry', label: 'Normalized run telemetry' },
     { id: 'sessions', label: 'Sessions and multi-bot conversations' },
     { id: 'workflow', label: 'What using it looks like' },
     { id: 'agentic-relevance', label: 'Where it fits in an open stack' },
@@ -200,6 +201,30 @@ function Body() {
         The last question is the broker-specific one and it is valuable. A graph written against a rich harness may
         use features a simpler one lacks. Knowing that before running is the difference between a planned adjustment
         and a failure at step nine.
+      </p>
+
+      <h2 id="telemetry">Normalized run telemetry</h2>
+      <p>
+        Later releases added durable, normalized run telemetry with recent-run inspection, elapsed time, partial
+        failure summaries, and copyable handoffs to the active harness, alongside a bounded workspace context picker
+        that produces an explicit delivery manifest.
+      </p>
+      <p>
+        Normalization is the architecturally interesting word. Every harness reports its work differently, so a
+        broker that passes those reports straight through leaves you with several incompatible logs and no way to
+        ask what a run cost or how it ended across executors. Normalizing them at the routing layer is the only
+        place that question can be answered once.
+      </p>
+      <p>
+        Partial failure is the state worth designing for explicitly. A run that half-succeeded is what brokers
+        handle worst: the harness reports completion, and the caller cannot tell that a step inside failed.
+        Surfacing it as its own state rather than folding it into success or failure is a small correctness
+        improvement that shows up constantly once real work flows through.
+      </p>
+      <p>
+        The delivery manifest follows from the broker position. Because the broker executes nothing, the only
+        honest account it can give is a precise description of what it handed over. That is the same instinct as the
+        projection report, applied to context rather than to capability.
       </p>
 
       <h2 id="sessions">Sessions and multi-bot conversations</h2>

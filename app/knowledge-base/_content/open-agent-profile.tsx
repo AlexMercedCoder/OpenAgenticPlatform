@@ -50,7 +50,7 @@ function Body() {
         session ends. Nothing needs to stay resident. The file is the agent.
       </p>
       <p>
-        The specification is at version 1.0 with maintenance releases, is Apache licensed, and ships support
+        The specification is at version 1.0 with support libraries at 1.0.4, is Apache licensed, and ships support
         libraries in several languages along with a conformance test suite.
       </p>
 

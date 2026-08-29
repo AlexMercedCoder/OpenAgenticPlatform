@@ -41,8 +41,8 @@ function Body() {
       <p>
         An Agentic Graph is a directed acyclic graph where every node is a bounded agentic loop, meaning one unit of
         work an agent runs end to end, and every edge is a control-flow dependency. The specification is an open,
-        implementation-neutral format for writing that graph down, currently at version 1.0 with maintenance
-        releases, under Apache 2.0.
+        implementation-neutral format for writing that graph down, currently at version 1.0 with support
+        libraries at 1.0.4, under Apache 2.0.
       </p>
       <p>
         A node is not a prompt and it is not a function call. It carries a precise brief, typed inputs and outputs,
