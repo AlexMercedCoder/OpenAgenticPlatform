@@ -37,6 +37,7 @@ export const networkGroups: NetworkGroup[] = [
     links: [
       { label: 'OpenDataLakehouse.com', href: 'https://opendatalakehouse.com' },
       { label: 'SemanticLakehouse.com', href: 'https://semanticlakehouse.com' },
+      { label: 'OpenLakehouse.AlexMerced.com', href: 'https://openlakehouse.alexmerced.com' },
       { label: 'IcebergLakehouse.com', href: 'https://iceberglakehouse.com' },
       { label: 'DataLakehouseHub.com', href: 'https://datalakehousehub.com' },
       { label: 'DataLakehouse.help', href: 'https://datalakehouse.help' },
