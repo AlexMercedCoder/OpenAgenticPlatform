@@ -31,7 +31,7 @@ export const article: Article = {
     { label: 'MagAgent on GitHub', href: 'https://github.com/AlexMercedCoder/MagAgent', note: 'Source, documentation, and the roadmap toward a 1.0 release.' },
     { label: 'MagAgent on PyPI', href: 'https://pypi.org/project/mag-agent/', note: 'Installation and release history.' },
     { label: 'MagGraph', href: 'https://github.com/AlexMercedCoder/MagGraph', note: 'The graph memory layer MagAgent is built on.' },
-    { label: 'Mag Command Center', href: 'https://github.com/AlexMercedCoder/MagCommandCenter', note: 'The desktop application for MagAgent projects, chat, memory, and configuration.' },
+    { label: 'Download Mag Command Center 1.0.0-rc.1', href: 'https://github.com/AlexMercedCoder/MagCommandCenter/releases/tag/v1.0.0-rc.1', note: 'The tested desktop release candidate for Linux, macOS, and Windows.' },
     { label: 'Open Agent Profile', href: 'https://github.com/alexmerced-oss/open-agent-profile', note: 'The profile specification MagAgent implements for portable agent definitions.' },
     { label: 'Agentic Graph Specification', href: 'https://github.com/AlexMercedCoder/agentic-graph-spec', note: 'The graph format used for planned, reviewable multi-step work.' },
   ],
@@ -270,6 +270,13 @@ function Body() {
         An extensions view lists plugins, discovered skills, configured protocol server names, and tool-backend
         readiness without returning credentials. Reporting what is configured while withholding the secrets is the
         correct shape for an inventory surface, and it is a useful thing to check for in any harness offering one.
+      </p>
+      <p>
+        <b>Mag Command Center 1.0.0-rc.1</b> is the corresponding native desktop release candidate for Linux,
+        macOS, and Windows. It combines bounded workspace context, explicit Git controls, OAP profile groups,
+        governed AGS schedules, session lifecycle controls, tools and extension diagnostics, and accessible
+        appearance settings without creating a broader authority path than the local runtime. The release ships from
+        a cross-platform installer matrix with frontend, browser, Rust, security, provenance, and SBOM checks.
       </p>
 
       <h2 id="evals">Evaluation as a built-in concern</h2>

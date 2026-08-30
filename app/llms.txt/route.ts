@@ -42,7 +42,7 @@ ${section('Definition', [
 ${section('Architecture', [
   '1. Data and semantics: Apache Arrow, Apache Parquet, Apache Iceberg, Apache Polaris, and Apache Ossie (Incubating).',
   '2. Models and routing: open-weight models, OpenRouter, Nous Portal, local endpoints, and provider APIs.',
-  '3. Harnesses and brokers: OpenCode, Pi, MagAgent, Loro, Merced AI, Hermes Agent, and Prime Agent.',
+  '3. Harnesses and brokers: OpenCode, Pi, MagAgent, Mag Command Center 1.0.0-rc.1, Loro, Merced AI, Hermes Agent, and Prime Agent.',
   '4. Open standards: Agent Skills, Model Context Protocol (MCP), Open Agent Profile (OAP), and Agentic Graph Specification (AGS).',
 ])}
 ## Knowledge base
