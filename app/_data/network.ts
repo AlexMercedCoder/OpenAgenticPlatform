@@ -17,6 +17,7 @@ export const networkGroups: NetworkGroup[] = [
       { label: 'AlexMercedAI.com', href: 'https://www.alexmercedai.com' },
       { label: 'OpenAgenticPlatform.com', href: 'https://openagenticplatform.com' },
       { label: 'AgenticLakehouse.com', href: 'https://agenticlakehouse.com' },
+      { label: 'AgenticAnalyticsNow.com', href: 'https://agenticanalyticsnow.com' },
       { label: 'DataAIWiki.com', href: 'https://dataaiwiki.com' },
     ],
   },
