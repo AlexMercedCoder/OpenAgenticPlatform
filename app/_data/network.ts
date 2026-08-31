@@ -52,6 +52,7 @@ export const networkGroups: NetworkGroup[] = [
       { label: 'AlexMerced.blog', href: 'https://alexmerced.blog' },
       { label: 'GrokOverflow.com', href: 'https://grokoverflow.com' },
       { label: 'IngestThis.com', href: 'https://ingestthis.com' },
+      { label: 'AlexMercedMusic.com', href: 'https://alexmercedmusic.com' },
       { label: 'Coding tutorials', href: 'https://tuts.alexmercedcoder.dev' },
       { label: 'AlexMercedLibertarian.com', href: 'https://alexmercedlibertarian.com' },
     ],
