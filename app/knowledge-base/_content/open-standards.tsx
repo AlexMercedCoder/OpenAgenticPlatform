@@ -6,18 +6,19 @@ export const article: Article = {
   kind: 'layer',
   layer: null,
   kicker: '04 / INTEROPERABILITY',
-  summary: 'The layer that lets skills, tool connections, agent identity, and workflow definitions move between runtimes instead of being rewritten.',
-  standfirst: 'Every harness needs to know what an agent is, what it can do, what it may connect to, and how a piece of work is shaped. Standards decide whether those definitions belong to your organization or to whichever tool you happened to adopt first.',
-  keywords: ['agent standards', 'Model Context Protocol', 'Agent Skills', 'Open Agent Profile', 'Agentic Graph Specification', 'agent interoperability', 'portable agents'],
+  summary: 'The layer that lets skills, tool connections, identity, workflows, and human approvals move between runtimes instead of being rewritten.',
+  standfirst: 'Every harness needs portable answers for capability, connection, identity, work shape, and human authorization. Standards decide whether those definitions belong to your organization or to the first tool you adopted.',
+  keywords: ['agent standards', 'Model Context Protocol', 'Agent Skills', 'Open Agent Profile', 'Agentic Graph Specification', 'Agent Approval Interchange Specification', 'agent interoperability', 'portable agents'],
   sections: [
     { id: 'what-the-layer-covers', label: 'What the layer covers' },
     { id: 'the-problem', label: 'The problem standards solve' },
-    { id: 'four-questions', label: 'Four questions, four standards' },
+    { id: 'four-questions', label: 'Five questions, five standards' },
     { id: 'mcp', label: 'Connection: MCP' },
     { id: 'skills', label: 'Capability: Agent Skills' },
     { id: 'identity', label: 'Identity: Open Agent Profile' },
     { id: 'workflow', label: 'Shape: Agentic Graph Specification' },
-    { id: 'together', label: 'How the four fit together' },
+    { id: 'approval', label: 'Authority handoff: AAIS' },
+    { id: 'together', label: 'How the five fit together' },
     { id: 'what-makes-a-standard-open', label: 'What makes a standard actually open' },
     { id: 'versioning', label: 'Versioning and compatibility' },
     { id: 'adoption', label: 'Adopting standards without a rewrite' },
@@ -30,6 +31,7 @@ export const article: Article = {
     { label: 'Agent Skills', href: 'https://agentskills.io', note: 'The format for packaging reusable agent capability as folders of instructions and resources.' },
     { label: 'Open Agent Profile', href: 'https://github.com/alexmerced-oss/open-agent-profile', note: 'A vendor-neutral profile format for agent identity, capability, authority, and preferences.' },
     { label: 'Agentic Graph Specification', href: 'https://github.com/AlexMercedCoder/agentic-graph-spec', note: 'A portable document format for describing nodes, edges, tools, policy, and execution intent.' },
+    { label: 'Agent Approval Interchange Specification', href: 'https://github.com/alexmerced-oss/agent-approval-interchange-spec', note: 'A transport-neutral protocol for exact, durable human approval requests and decisions.' },
     { label: 'JSON Schema', href: 'https://json-schema.org', note: 'The vocabulary most agent standards use to describe tool arguments and structured output.' },
     { label: 'OpenAPI Specification', href: 'https://www.openapis.org', note: 'Useful precedent for how an interface description standard changes an ecosystem.' },
   ],
@@ -85,7 +87,7 @@ function Body() {
         </p>
       </div>
 
-      <h2 id="four-questions">Four questions, four standards</h2>
+      <h2 id="four-questions">Five questions, five standards</h2>
       <p>
         The four standards this site highlights are not competing. They answer different questions, and a system can
         use any combination of them.
@@ -98,6 +100,7 @@ function Body() {
             <tr><td>What does this agent know how to do?</td><td>Agent Skills</td><td>A folder of instructions and supporting files</td></tr>
             <tr><td>Who is this agent and what may it do?</td><td>Open Agent Profile</td><td>A profile document describing identity, capability, and authority</td></tr>
             <tr><td>What is the shape of this work?</td><td>Agentic Graph Specification</td><td>A graph document of nodes, edges, tools, and policy</td></tr>
+            <tr><td>May this exact action proceed?</td><td>Agent Approval Interchange Specification</td><td>A digest-bound request, decision, and receipt</td></tr>
           </tbody>
         </table>
       </div>
@@ -210,7 +213,20 @@ function Body() {
         leave open-ended work open-ended, rather than treating either style as the correct one everywhere.
       </p>
 
-      <h2 id="together">How the four fit together</h2>
+      <h2 id="approval">Authority handoff: AAIS</h2>
+      <p>
+        The Agent Approval Interchange Specification covers the moment a runtime must stop and ask a person whether
+        one exact action may proceed. It binds the decision to a canonical action digest, limits the client to scopes
+        the harness offered, and treats pending approvals as durable state that browser, desktop, CLI, or policy
+        clients can recover after a reconnect.
+      </p>
+      <p>
+        This keeps enforcement in the harness while freeing users from the terminal. AAIS carries concise activity,
+        provenance, risk, choices, decisions, and receipts; it does not expose private model reasoning or define the
+        surrounding chat, tool, profile, or graph protocol.
+      </p>
+
+      <h2 id="together">How the five fit together</h2>
       <p>
         The clearest way to see the division of labor is to follow one request through a system that uses all four.
       </p>

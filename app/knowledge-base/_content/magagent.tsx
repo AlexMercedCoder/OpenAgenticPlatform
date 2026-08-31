@@ -31,7 +31,7 @@ export const article: Article = {
     { label: 'MagAgent on GitHub', href: 'https://github.com/AlexMercedCoder/MagAgent', note: 'Source, documentation, and the roadmap toward a 1.0 release.' },
     { label: 'MagAgent on PyPI', href: 'https://pypi.org/project/mag-agent/', note: 'Installation and release history.' },
     { label: 'MagGraph', href: 'https://github.com/AlexMercedCoder/MagGraph', note: 'The graph memory layer MagAgent is built on.' },
-    { label: 'Download Mag Command Center 1.0.0-rc.1', href: 'https://github.com/AlexMercedCoder/MagCommandCenter/releases/tag/v1.0.0-rc.1', note: 'The tested desktop release candidate for Linux, macOS, and Windows.' },
+    { label: 'Download Mag Command Center 1.0.0-rc.3', href: 'https://github.com/AlexMercedCoder/MagCommandCenter/releases/tag/v1.0.0-rc.3', note: 'The tested desktop release candidate for Linux, macOS, and Windows.' },
     { label: 'Open Agent Profile', href: 'https://github.com/alexmerced-oss/open-agent-profile', note: 'The profile specification MagAgent implements for portable agent definitions.' },
     { label: 'Agentic Graph Specification', href: 'https://github.com/AlexMercedCoder/agentic-graph-spec', note: 'The graph format used for planned, reviewable multi-step work.' },
   ],
@@ -45,7 +45,7 @@ function Body() {
       <h2 id="what-it-is">What it is</h2>
       <p>
         MagAgent is a terminal-native agent framework written in Python and licensed under Apache 2.0, at version
-        1.0.0 since August 2026. It handles
+        1.1.1 since August 2026. It handles
         coding and general productivity work: reading and editing files, running commands, searching the web,
         querying databases, generating documents, and orchestrating multi-step tasks.
       </p>
@@ -272,7 +272,7 @@ function Body() {
         correct shape for an inventory surface, and it is a useful thing to check for in any harness offering one.
       </p>
       <p>
-        <b>Mag Command Center 1.0.0-rc.1</b> is the corresponding native desktop release candidate for Linux,
+        <b>Mag Command Center 1.0.0-rc.3</b> is the corresponding native desktop release candidate for Linux,
         macOS, and Windows. It combines bounded workspace context, explicit Git controls, OAP profile groups,
         governed AGS schedules, session lifecycle controls, tools and extension diagnostics, and accessible
         appearance settings without creating a broader authority path than the local runtime. The release ships from
@@ -334,7 +334,7 @@ function Body() {
       <ul>
         <li><b>Memory needs curation.</b> A graph that accumulates everything degrades recall. Explicit promotion is the mechanism, and someone has to use it.</li>
         <li><b>Memory is a data store.</b> Whatever an agent learns about a project is written down, including anything sensitive it encountered. Treat the memory repository with the same care as the code.</li>
-        <li><b>1.0 is recent.</b> MagAgent reached 1.0.0 in August 2026. Its committed interfaces are settled, and the local web UI is the newest surface and the one most likely to keep changing.</li>
+        <li><b>1.1 is recent.</b> MagAgent 1.1.1 adds durable AAIS approval handling across chats, bots, and graph runs; the browser can present decisions without falling back to the terminal.</li>
         <li><b>Shell access is the boundary question.</b> As with any capable harness, running commands means the agent can do what the user can, unless sandboxed.</li>
         <li><b>Breadth has a cost.</b> A large tool surface means tool selection quality matters. Scoping tools per profile is the mitigation, and it has to be used.</li>
         <li><b>Language servers need working project setup.</b> The symbol tooling is only as good as the project configuration underneath it.</li>

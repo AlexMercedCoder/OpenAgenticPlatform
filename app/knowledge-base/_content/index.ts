@@ -29,6 +29,7 @@ import { article as agentSkills } from './agent-skills';
 import { article as modelContextProtocol } from './model-context-protocol';
 import { article as openAgentProfile } from './open-agent-profile';
 import { article as agenticGraphSpecification } from './agentic-graph-specification';
+import { article as agentApprovalInterchangeSpecification } from './agent-approval-interchange-specification';
 
 import { article as replaceable } from './replaceable';
 import { article as inspectable } from './inspectable';
@@ -69,6 +70,7 @@ export const articles: Article[] = [
   modelContextProtocol,
   openAgentProfile,
   agenticGraphSpecification,
+  agentApprovalInterchangeSpecification,
 
   replaceable,
   inspectable,

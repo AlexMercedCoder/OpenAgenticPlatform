@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   keywords: [
     'open agentic platform', 'agentic AI architecture', 'open source AI', 'AI agents',
     'Model Context Protocol', 'MCP', 'Agent Skills', 'Open Agent Profile', 'OAP',
-    'Agentic Graph Specification', 'AGS', 'agent harness', 'agent broker',
+    'Agentic Graph Specification', 'AGS', 'Agent Approval Interchange Specification', 'AAIS', 'agent harness', 'agent broker',
     'Apache Iceberg', 'Apache Polaris', 'Apache Arrow', 'Apache Parquet', 'Apache Ossie',
     'open weight models', 'model routing', 'semantic layer', 'agent governance',
   ],
@@ -66,7 +66,7 @@ const structuredData = {
       description: 'A four-layer architecture spanning data and semantics, models and routing, harnesses and brokers, and open standards.',
       mainEntityOfPage: { '@id': `${BASE}/#website` },
       author: { '@id': `${BASE}/#alex-merced` },
-      dateModified: '2026-08-29',
+      dateModified: '2026-08-31',
       inLanguage: 'en-US',
     },
     {

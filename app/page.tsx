@@ -28,7 +28,7 @@ const layers: Layer[] = [
     { name:'OpenCode', role:'Terminal coding agent', slug:'opencode', href:'https://opencode.ai' },
     { name:'Pi', role:'Agent harness', slug:'pi', href:'https://github.com/earendil-works/pi' },
     { name:'MagAgent', role:'Developer agent framework', slug:'magagent', href:'https://github.com/AlexMercedCoder/MagAgent' },
-    { name:'Mag Command Center', role:'Native agent workspace', slug:'magagent', href:'https://github.com/AlexMercedCoder/MagCommandCenter/releases/tag/v1.0.0-rc.1' },
+    { name:'Mag Command Center', role:'Native agent workspace', slug:'magagent', href:'https://github.com/AlexMercedCoder/MagCommandCenter/releases/tag/v1.0.0-rc.3' },
     { name:'Loro', role:'Governed agent harness', slug:'loro', href:'https://github.com/alexmerced-oss/loro' },
     { name:'Merced AI', role:'Agent broker', slug:'merced-ai', href:'https://github.com/AlexMercedCoder/merced-ai' },
     { name:'Hermes Agent', role:'Evolving personal agent', slug:'hermes-agent', href:'https://github.com/NousResearch/hermes-agent' },
@@ -39,6 +39,7 @@ const layers: Layer[] = [
     { name:'MCP', role:'Tools, data & workflow connection', slug:'model-context-protocol', href:'https://modelcontextprotocol.io' },
     { name:'OAP', role:'Portable agent profiles', slug:'open-agent-profile', href:'https://github.com/alexmerced-oss/open-agent-profile' },
     { name:'AGS', role:'Portable agentic graphs', slug:'agentic-graph-specification', href:'https://github.com/AlexMercedCoder/agentic-graph-spec' },
+    { name:'AAIS', role:'Portable human approvals', slug:'agent-approval-interchange-specification', href:'https://github.com/alexmerced-oss/agent-approval-interchange-spec' },
   ] },
 ];
 
