@@ -24,11 +24,12 @@ export const networkGroups: NetworkGroup[] = [
   {
     title: 'Identity and work',
     links: [
-      { label: 'AlexMerced.com', href: 'https://www.alexmerced.com' },
+      { label: 'AlexMerced.com', href: 'https://alexmerced.com' },
       { label: 'WhoIsAlexMerced.com', href: 'https://whoisalexmerced.com' },
       { label: 'AlexMercedCoder.dev', href: 'https://alexmercedcoder.dev' },
       { label: 'AlexMercedData.com', href: 'https://alexmerceddata.com' },
       { label: 'AlexMercedMedia.com', href: 'https://alexmercedmedia.com' },
+      { label: 'Branding.AlexMerced.com', href: 'https://branding.alexmerced.com' },
       { label: 'Books by Alex Merced', href: 'https://books.alexmerced.com' },
       { label: 'Resources', href: 'https://resources.alexmerced.com' },
     ],
@@ -55,6 +56,7 @@ export const networkGroups: NetworkGroup[] = [
       { label: 'AlexMercedMusic.com', href: 'https://alexmercedmusic.com' },
       { label: 'Coding tutorials', href: 'https://tuts.alexmercedcoder.dev' },
       { label: 'AlexMercedLibertarian.com', href: 'https://alexmercedlibertarian.com' },
+      { label: 'D6Storyteller.AlexMerced.com', href: 'https://d6storyteller.alexmerced.com' },
     ],
   },
 ];
