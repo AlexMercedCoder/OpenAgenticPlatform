@@ -75,7 +75,28 @@ export default function Home() {
 
     <section className="stack wrap" id="stack"><div className="section-intro"><p className="section-label">ARCHITECTURE / 01 TO 04</p><div><h2>Four layers.<br/>No mandatory vendor.</h2><p>Each layer answers a different question. Together they turn model capability into durable, governable work. Every name below has a full explanation in the <Link href="/knowledge-base">knowledge base</Link>.</p></div></div><div className="layer-list">{layers.map(layer=><article className={`layer-card ${layer.color}`} key={layer.number}><div className="layer-title"><span>{layer.number} / {layer.label}</span><h3>{layer.title}</h3><p>{layer.summary}</p><Link className="layer-kb-link" href={`/knowledge-base/${layer.slug}`}>Read the layer explainer →</Link></div><div className="component-list">{layer.items.map((item)=><Link href={`/knowledge-base/${item.slug}`} key={item.name}><b>{item.name}</b><span>{item.role}</span><i>→</i></Link>)}</div></article>)}</div></section>
 
-    <section className="openness" id="tests"><div className="wrap"><div className="section-intro light"><p className="section-label">THE OPENNESS TEST / 05</p><div><h2>Open is a property<br/>of the whole system.</h2><p>A pile of open-source parts can still produce a closed architecture. Test the relationships as carefully as the licenses.</p></div></div><div className="test-grid">{tests.map(([title,body,slug],index)=><article key={title}><span>{String(index+1).padStart(2,'0')}</span><h3><Link href={`/knowledge-base/${slug}`}>{title}</Link></h3><p>{body}</p></article>)}</div></div></section>
+    <section className="openness" id="tests"><div className="wrap"><div className="section-intro light"><p className="section-label">THE OPENNESS TEST / 06</p><div><h2>Open is a property<br/>of the whole system.</h2><p>A pile of open-source parts can still produce a closed architecture. Test the relationships as carefully as the licenses.</p></div></div><div className="test-grid">{tests.map(([title,body,slug],index)=><article key={title}><span>{String(index+1).padStart(2,'0')}</span><h3><Link href={`/knowledge-base/${slug}`}>{title}</Link></h3><p>{body}</p></article>)}</div></div></section>
+
+    <section className="wrap" id="scorecards" style={{paddingBlock:'4rem'}}>
+      <p className="section-label">WORKED SCORECARDS</p>
+      <h2>Score two possible stacks.</h2>
+      <p>These are illustrative designs, not ratings of named vendors. Give each test 0 (absent), 1 (partial), or 2 (demonstrated). Record the evidence before buying or building.</p>
+      <div style={{overflowX:'auto'}}>
+        <table style={{width:'100%',borderCollapse:'collapse',minWidth:620,textAlign:'left'}}>
+          <thead><tr><th>Test</th><th>Composable stack</th><th>Single-suite stack</th></tr></thead>
+          <tbody>
+            <tr><th>Replaceable</th><td>2 — engine and model APIs are swappable</td><td>0 — proprietary orchestration couples both</td></tr>
+            <tr><th>Inspectable</th><td>2 — prompts, tools, and traces are exported</td><td>1 — console shows traces but no export</td></tr>
+            <tr><th>Portable</th><td>2 — profile and work use open schemas</td><td>0 — agent state is trapped in the suite</td></tr>
+            <tr><th>Bounded</th><td>2 — explicit tool scopes and approvals</td><td>1 — role permissions without per-action approval</td></tr>
+            <tr><th>Grounded</th><td>2 — governed metrics and versioned tables</td><td>1 — connected data without shared metrics</td></tr>
+            <tr><th>Auditable</th><td>2 — run, approval, and data versions recorded</td><td>1 — partial logs with short retention</td></tr>
+            <tr><th>Total</th><td><strong>12 / 12</strong></td><td><strong>4 / 12</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Use the <a href="/knowledge-base">knowledge base</a> to define each criterion, then repeat the score with evidence from your actual deployment.</p>
+    </section>
 
     <section className="build wrap" id="build"><div className="section-intro"><p className="section-label">A PRACTICAL PATH / 06</p><div><h2>Build from the ground up.</h2><p>Start with durable context. Add intelligence and execution only after control boundaries are clear.</p></div></div><ol><li><span>1</span><div><b>Ground the system</b><p>Choose open formats, a catalog, and a semantic layer that agents and people can share.</p></div></li><li><span>2</span><div><b>Define the contracts</b><p>Express identity, skills, tools, workflows, policy, and approval points in portable forms.</p></div></li><li><span>3</span><div><b>Compose the runtime</b><p>Select models, routers, brokers, and harnesses according to the work, not brand gravity.</p></div></li><li><span>4</span><div><b>Observe and evolve</b><p>Retain evidence, evaluate outcomes, and replace components as requirements change.</p></div></li></ol></section>
 
