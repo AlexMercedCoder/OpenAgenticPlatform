@@ -56,7 +56,7 @@ export default function WebMCP({ knowledgeBase = [] }: { knowledgeBase?: KbEntry
           const groups = {
             data: ['Apache Arrow', 'Apache Parquet', 'Apache Iceberg', 'Apache Polaris', 'Apache Ossie'],
             models: ['Open-weight models', 'OpenRouter', 'Nous Portal', 'Local endpoints', 'Provider APIs'],
-            execution: ['OpenCode', 'Pi', 'MagAgent 1.1.1', 'Mag Command Center 1.0.0-rc.3', 'Loro 0.19.2', 'Merced AI 0.5.1', 'Hermes Agent', 'Prime Agent'],
+            execution: ['OpenCode', 'Pi', 'MagAgent 1.4.0', 'Mag Command Center 1.0.0', 'Loro 0.22.0', 'Merced AI 0.8.0', 'Hermes Agent', 'Prime Agent'],
             standards: ['Agent Skills', 'MCP', 'OAP 1.0', 'AGS 1.0', 'AAIS 1.0'],
           };
           const layer = typeof input.layer === 'string' ? input.layer : 'all';

@@ -29,9 +29,9 @@ export const article: Article = {
   learnMore: [
     { label: 'OpenCode', href: 'https://opencode.ai', note: 'An open terminal coding agent, useful as a readable reference implementation of a harness.' },
     { label: 'Pi', href: 'https://github.com/earendil-works/pi', note: 'An agent harness project with a compact, inspectable core.' },
-    { label: 'MagAgent', href: 'https://github.com/AlexMercedCoder/MagAgent', note: 'A Python agent framework covering providers, tools, memory, and workflows.' },
+    { label: 'MagAgent', href: 'https://github.com/AlexMercedCoder/MagAgent', note: 'A memory-first personal agent that remembers you across sessions in Git-backed Markdown you can review.' },
     { label: 'Loro', href: 'https://github.com/alexmerced-oss/loro', note: 'A harness organized around explicit authority, policy, evidence, and durable records.' },
-    { label: 'Merced AI', href: 'https://github.com/AlexMercedCoder/merced-ai', note: 'A provider-neutral broker for routing work across agents and model-powered tools.' },
+    { label: 'Merced AI', href: 'https://github.com/AlexMercedCoder/merced-ai', note: 'A broker that carries one portable agent identity across installed harnesses and reports what each one drops.' },
     { label: 'Hermes Agent', href: 'https://github.com/NousResearch/hermes-agent', note: 'A personal agent project from Nous Research.' },
     { label: 'Prime Agent', href: 'https://github.com/PrimeIntellect-ai/prime-agent', note: 'A self-improving agent built around reinforcement learning methods.' },
     { label: 'Model Context Protocol', href: 'https://modelcontextprotocol.io', note: 'The protocol most harnesses use to reach tools and data without hard-coding integrations.' },

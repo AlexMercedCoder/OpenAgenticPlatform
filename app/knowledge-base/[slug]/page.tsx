@@ -61,7 +61,7 @@ export default async function KnowledgeBaseArticle({ params }: { params: Promise
         isPartOf: { '@type': 'WebSite', '@id': 'https://openagenticplatform.com/#website' },
         author: { '@type': 'Person', name: 'Alex Merced', url: 'https://www.alexmerced.com' },
         publisher: { '@type': 'Organization', name: 'Open Agentic Platform', url: 'https://openagenticplatform.com/' },
-        dateModified: '2026-08-28',
+        dateModified: '2026-09-28',
         keywords: article.keywords.join(', '),
       },
       {

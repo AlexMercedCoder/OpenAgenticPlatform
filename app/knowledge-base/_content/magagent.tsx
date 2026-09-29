@@ -28,10 +28,11 @@ export const article: Article = {
     { id: 'not', label: 'What it is not' },
   ],
   learnMore: [
-    { label: 'MagAgent on GitHub', href: 'https://github.com/AlexMercedCoder/MagAgent', note: 'Source, documentation, and the roadmap toward a 1.0 release.' },
+    { label: 'MagAgent on GitHub', href: 'https://github.com/AlexMercedCoder/MagAgent', note: 'Source, documentation, changelog, and roadmap.' },
+    { label: 'MagAgent 1.4.0 release', href: 'https://github.com/AlexMercedCoder/MagAgent/releases/tag/v1.4.0', note: 'Release notes for the current version, including behavior changes and the security self-review.' },
     { label: 'MagAgent on PyPI', href: 'https://pypi.org/project/mag-agent/', note: 'Installation and release history.' },
     { label: 'MagGraph', href: 'https://github.com/AlexMercedCoder/MagGraph', note: 'The graph memory layer MagAgent is built on.' },
-    { label: 'Download Mag Command Center 1.0.0-rc.3', href: 'https://github.com/AlexMercedCoder/MagCommandCenter/releases/tag/v1.0.0-rc.3', note: 'The tested desktop release candidate for Linux, macOS, and Windows.' },
+    { label: 'Download Mag Command Center 1.0.0', href: 'https://github.com/AlexMercedCoder/MagCommandCenter/releases/tag/v1.0.0', note: 'The first stable desktop release for Linux, macOS, and Windows. Installers are unsigned; check them against the published SHA256SUMS.' },
     { label: 'Open Agent Profile', href: 'https://github.com/alexmerced-oss/open-agent-profile', note: 'The profile specification MagAgent implements for portable agent definitions.' },
     { label: 'Agentic Graph Specification', href: 'https://github.com/AlexMercedCoder/agentic-graph-spec', note: 'The graph format used for planned, reviewable multi-step work.' },
   ],
@@ -45,7 +46,8 @@ function Body() {
       <h2 id="what-it-is">What it is</h2>
       <p>
         MagAgent is a terminal-native agent framework written in Python and licensed under Apache 2.0, at version
-        1.1.1 since August 2026. It handles
+        1.4.0 since September 2026. The project describes itself as the memory-first personal agent: it remembers
+        you across sessions, in Git-backed Markdown you can review. It handles
         coding and general productivity work: reading and editing files, running commands, searching the web,
         querying databases, generating documents, and orchestrating multi-step tasks.
       </p>
@@ -82,6 +84,18 @@ function Body() {
         Memory that accumulates deliberately, with a reason attached, stays useful as it grows. The harness layer
         makes this argument generally; MagAgent is an implementation of it.
       </p>
+      <p>
+        Since 1.4.0, recall is also inspectable after the fact. Every turn records which memory nodes were recalled,
+        with their scores and the reason they matched, how many tokens were injected against the memory budget, and
+        whether the budget trimmed anything. The terminal command <code>/why last</code> explains the last turn, and
+        the web UI run center shows a &quot;Memory used&quot; panel per run. Memory that influences answers without
+        leaving a trace is hard to trust; memory that shows its work can be corrected.
+      </p>
+      <p>
+        The same release adds team memory: memory nodes shared through a Git repository, arriving only as proposal
+        branches that pass automatic checks and are accepted by someone other than the author. It is the explicit
+        promotion principle applied between people rather than between sessions.
+      </p>
 
       <h2 id="mag-ecosystem">The Mag ecosystem</h2>
       <p>
@@ -97,8 +111,8 @@ function Body() {
           <b>MagAgent</b> is the harness: the agent loop, tools, providers, and the terminal experience.
         </li>
         <li>
-          <b>Mag Command Center</b> is a cross-platform desktop application for projects, chat, configuration,
-          memory, and plugins.
+          <b>Mag Command Center</b> is the desktop cockpit for MagAgent: runs, approvals, graphs, and memory in one
+          window, for Linux, macOS, and Windows.
         </li>
       </ul>
       <p>
@@ -187,6 +201,12 @@ function Body() {
         broader ecosystem as a source rather than as competition, which is the practical expression of the
         interoperability argument. A team&apos;s existing procedures do not have to be rewritten to be usable here.
       </p>
+      <p>
+        Plugins can also be signed. Since 1.4.0, packs carry Ed25519 signatures over their files and manifest, a local
+        trust store decides which keys are accepted, and static JSON registries let a team publish packs that are
+        checked by hash, digest, and signature on install. There is no hosted registry; the registry is a file you
+        control.
+      </p>
 
       <h2 id="graphs">Agentic graphs for planned work</h2>
       <p>
@@ -204,6 +224,12 @@ function Body() {
         write down. Processes with branches, approval points, and consequences do, and those are exactly the ones
         where an unreviewed plan is expensive.
       </p>
+      <p>
+        MagAgent 1.4.0 also lets a graph node be run by an MCP tool or by another agent over A2A instead of by a
+        model, through a vendor extension on the node, after approval. That feature is experimental, and because it
+        is an extension rather than part of the specification, other AGS runtimes will not run those nodes the same
+        way.
+      </p>
 
       <h2 id="sandboxes">Sandboxes and boundaries</h2>
       <p>
@@ -220,6 +246,14 @@ function Body() {
         narrowed per profile rather than being global. The harness layer&apos;s test applies: if the model behaved
         adversarially, what could it actually do? With a narrow profile inside a container, the answer is bounded by
         construction rather than by instruction.
+      </p>
+      <p>
+        Profiles are enforced more strictly as of 1.4.0. A profile that sets <code>shell: ask</code> now requires
+        approval for every shell command, including ones MagAgent would otherwise treat as read-only, in every
+        permission mode; <code>shell: deny</code> removes the shell tools entirely. &quot;Always allow&quot; answers
+        become grants that expire (30 days by default), can be listed and revoked, and leave a receipt each time they
+        are used. Approvals live in the shared AAIS file store, and processes waiting on a decision are woken by a
+        notification instead of re-reading the store every 100 milliseconds.
       </p>
 
       <h2 id="background">Background work and the daemon</h2>
@@ -272,11 +306,21 @@ function Body() {
         correct shape for an inventory surface, and it is a useful thing to check for in any harness offering one.
       </p>
       <p>
-        <b>Mag Command Center 1.0.0-rc.3</b> is the corresponding native desktop release candidate for Linux,
-        macOS, and Windows. It combines bounded workspace context, explicit Git controls, OAP profile groups,
-        governed AGS schedules, session lifecycle controls, tools and extension diagnostics, and accessible
-        appearance settings without creating a broader authority path than the local runtime. The release ships from
-        a cross-platform installer matrix with frontend, browser, Rust, security, provenance, and SBOM checks.
+        <b>Mag Command Center 1.0.0</b>, released in September 2026, is the first stable version of the native
+        desktop app for Linux (.deb, .rpm, AppImage), macOS (Apple Silicon and Intel), and Windows (.msi and .exe).
+        It requires MagAgent 1.4.0. Stop now ends the whole process tree a run started, a run that exits with a
+        decision pending reports the approval as interrupted rather than dropping it, keys can be entered in the app
+        and passed to MagAgent over stdin, and a first run can use MagAgent&apos;s offline demo provider. A tray icon
+        and OS notifications report waiting approvals, diffs and checkpoints render as a reviewable file-by-file
+        view with an editor handoff, and the console no longer runs arbitrary programs without a native
+        confirmation.
+      </p>
+      <p>
+        Two cautions apply. The installers are unsigned, so macOS Gatekeeper and Windows SmartScreen will warn;
+        each release publishes SHA256SUMS, SBOMs, and build-provenance attestations to check against instead. And
+        several features work but sit outside the 1.0 stability promise and are labeled experimental: group
+        sessions, the extension API, a remote mode that drives MagAgent&apos;s <code>magent serve --rpc</code>
+        gateway (itself experimental), Loro as a second harness, and a managed MagAgent install.
       </p>
 
       <h2 id="evals">Evaluation as a built-in concern</h2>
@@ -302,6 +346,11 @@ function Body() {
         numbers. That is the same instinct as the harness layer&apos;s advice to read traces weekly, expressed as
         tooling rather than as a habit, and it addresses the specific risk that a memory-first design creates for
         itself.
+      </p>
+      <p>
+        Version 1.4.0 adds an edit-quality benchmark that scores the file-editing tool by the exact bytes it leaves on
+        disk, and an offline <code>mock</code> provider (experimental) so demos and continuous integration can run
+        the real loop without a key or a network.
       </p>
 
       <h2 id="agentic-relevance">Where it fits in an open stack</h2>
@@ -334,7 +383,8 @@ function Body() {
       <ul>
         <li><b>Memory needs curation.</b> A graph that accumulates everything degrades recall. Explicit promotion is the mechanism, and someone has to use it.</li>
         <li><b>Memory is a data store.</b> Whatever an agent learns about a project is written down, including anything sensitive it encountered. Treat the memory repository with the same care as the code.</li>
-        <li><b>1.1 is recent.</b> MagAgent 1.1.1 adds durable AAIS approval handling across chats, bots, and graph runs; the browser can present decisions without falling back to the terminal.</li>
+        <li><b>1.4 changes some behavior.</b> Profiles with <code>shell: ask</code> now prompt for every command, older &quot;always allow&quot; grants are flagged as legacy, <code>magent ask --json</code> keeps stdout for machine output, and graph resume asks again for redacted secrets. Read the release notes before upgrading scripts.</li>
+        <li><b>Experimental means experimental.</b> The RPC gateway, MCP and A2A graph executors, and the mock provider are labeled experimental, and the VS Code bridge is an unpublished extension in the repository. The 1.4.0 security fixes came from a self-review, not an independent audit.</li>
         <li><b>Shell access is the boundary question.</b> As with any capable harness, running commands means the agent can do what the user can, unless sandboxed.</li>
         <li><b>Breadth has a cost.</b> A large tool surface means tool selection quality matters. Scoping tools per profile is the mitigation, and it has to be used.</li>
         <li><b>Language servers need working project setup.</b> The symbol tooling is only as good as the project configuration underneath it.</li>

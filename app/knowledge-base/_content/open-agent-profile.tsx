@@ -236,6 +236,13 @@ function Body() {
         running in production is exactly the one that was approved.
       </p>
       <p>
+        The digest only works if every tool computes it the same way, and the implementations show why that is worth
+        testing. Until Loro 0.22.0 in September 2026, Loro hashed its own projection of a profile with defaults
+        filled in, so a profile it wrote had a different digest there than in the reference library, MagAgent, and
+        Merced AI. It now hashes the document as authored, like the others, and migrates older pins with an audit
+        record.
+      </p>
+      <p>
         On adoption, the specification lists known implementations, and the honest reading is that it is a young
         standard with a small number of them. That is a real limitation and it should be weighed against the
         alternative, which is not a mature portable format but no portable format at all. The risk of adopting a

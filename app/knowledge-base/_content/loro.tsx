@@ -30,6 +30,7 @@ export const article: Article = {
   ],
   learnMore: [
     { label: 'Loro on GitHub', href: 'https://github.com/alexmerced-oss/loro', note: 'Source, documentation, and the project status page describing what is stable and what is pre-1.0.' },
+    { label: 'Loro 0.22.0 release', href: 'https://github.com/alexmerced-oss/loro/releases/tag/v0.22.0', note: 'Release notes for the current version, including what is experimental and the threat-model self-review.' },
     { label: 'loro-agent on PyPI', href: 'https://pypi.org/project/loro-agent/', note: 'Installation, extras for data, cloud, MCP, gateway, and web UI, and release history.' },
     { label: 'Open Agent Profile', href: 'https://github.com/alexmerced-oss/open-agent-profile', note: 'The profile specification Loro implements for portable, governed agent definitions.' },
     { label: 'Agentic Graph Specification', href: 'https://github.com/AlexMercedCoder/agentic-graph-spec', note: 'The plan format Loro validates and executes with human gates.' },
@@ -47,7 +48,9 @@ function Body() {
       <p>
         Loro is a Python command line agent harness aimed at enterprise coding, governed data work, and productivity
         tasks. The name is Spanish for parrot, chosen for a bird that listens, learns, and helps information move
-        between groups.
+        between groups. It has been at version 0.22.0 since September 2026, and the project summarizes itself as the
+        governed agent harness for data and platform teams: verified identity, tamper-evident audit, lakehouse-native
+        tools.
       </p>
       <p>
         What separates it from the general category of agent harnesses is where it starts. The design begins with
@@ -101,6 +104,15 @@ function Body() {
         It also makes the audit trail useful to someone outside the engineering team, because the record names people
         and roles rather than service accounts.
       </p>
+      <p>
+        Release 0.22.0 makes that identity verifiable. With OpenID Connect configured, Loro checks tokens itself
+        (discovery, rotating signing keys, an algorithm allowlist, audience, expiry, and nonce), marks an identity as
+        verified only when its token was checked, and attributes web UI runs and approval decisions to the signed-in
+        user. A multi-user server mode builds on it with viewer, operator, approver, and admin roles, separation of
+        duties so an operator cannot also approve, and an approval queue that can live in Postgres so several
+        hosts share one authority. Both are labeled experimental, and the OIDC support was tested against a mock
+        identity provider rather than a public one.
+      </p>
 
       <h2 id="policy">Policy over normalized resources</h2>
       <p>
@@ -138,6 +150,12 @@ function Body() {
         Approval records that are bound to the specific action are also the artifact that makes a later review
         meaningful, since they establish what a person actually saw and agreed to.
       </p>
+      <p>
+        Since 0.22.0 those records are kept in the shared AAIS approval store rather than Loro&apos;s own file
+        handling. Pending requests record their owner in a way that survives process-id reuse, resolved records are
+        compacted instead of growing without bound, a corrupt state file is quarantined until someone acknowledges
+        it, and <code>loro approvals recovery</code> reports and cancels orphaned requests.
+      </p>
 
       <h2 id="sandboxing">Subprocess profiles and containment</h2>
       <p>
@@ -155,6 +173,15 @@ function Body() {
         The combination is the harness layer&apos;s test applied concretely: if the model behaved adversarially, what
         could it actually do? With a narrow profile, a minimized environment, and enforcement underneath, the answer
         is bounded by construction.
+      </p>
+      <p>
+        Version 0.22.0 adds an experimental container backend that runs sandboxed commands in a fresh Docker or
+        Podman container with a read-only root, dropped capabilities, resource limits, and no network when denied,
+        using gVisor when it is registered. It also adds three coding tools, also experimental, that go through the
+        same permissions, approvals, and audit as everything else: all-or-nothing patch application, a test runner
+        in its own sandbox profile, and a web fetch limited to allowlisted HTTPS domains and public addresses and off
+        by default. Command hooks and plugins (experimental) can block a tool call but can never approve or rewrite
+        one.
       </p>
 
       <h2 id="memory">Local memory and governed shared memory</h2>
@@ -217,6 +244,15 @@ function Body() {
         working three weeks ago is worse than none, because it produces confidence without coverage. Being able to
         check that delivery is healthy is part of the feature rather than an operational extra.
       </p>
+      <p>
+        Release 0.22.0 extends the same idea in two directions, both experimental. Audit can be forwarded to a SIEM
+        over syslog as OCSF or CEF, best effort so a collector outage never blocks a run, with optional
+        OpenTelemetry traces and metrics that never record content. And a single run can be exported as an evidence
+        bundle with <code>loro run export</code>: its hash-verified slice of the audit log, approval receipts,
+        configuration and profile digests, redacted tool calls, sandbox status, and model usage.{' '}
+        <code>loro run verify</code> fails if any byte was altered, which turns one run into something a reviewer
+        outside the team can check.
+      </p>
 
       <h2 id="standards">Standards support</h2>
       <p>
@@ -242,6 +278,14 @@ function Body() {
         mode with a read-only export ceiling.
       </p>
       <p>
+        Two 0.22.0 changes show the conservatism holding across tools. Loro now computes OAP profile digests over the
+        document as authored, matching the reference library, MagAgent, and Merced AI; earlier releases hashed a
+        projection with defaults filled in, so the same profile had a different digest in Loro. And a graph whose
+        nodes use a vendor executor extension Loro does not implement, such as MagAgent&apos;s MCP and A2A node
+        executors, is now refused at validation instead of being quietly run as an ordinary model task. The MCP
+        server, at protocol revision 2025-11-25, is now in the supported set.
+      </p>
+      <p>
         The pattern across all four is the same: adopt the portable format, and do not let adopting it become a way
         around the authority model.
       </p>
@@ -258,6 +302,13 @@ function Body() {
         person adjust settings. The moment it can do those things outside the policy engine, the policy engine is
         advisory. Keeping workspace file context bounded, artifact previews authenticated, Git review read-only, and
         one isolated workspace and policy root per server preserves the property the harness exists to provide.
+      </p>
+      <p>
+        As of 0.22.0 the local web UI, in its loopback, launch-token, single-user mode, is a supported surface rather
+        than a preview; sign-in, non-loopback, and multi-user use remain experimental. Resumed sessions in the CLI and
+        the web UI now send earlier turns to the model as real messages, each passing the data-protection policy, and
+        when history outgrows its budget the oldest turns are compacted into a deterministic summary and the
+        compaction is written to the audit log.
       </p>
       <p>
         The run center spans conversations and graph executions together, with usage and approval visibility in the
@@ -342,7 +393,8 @@ function Body() {
       <h2 id="gotchas">Gotchas worth knowing</h2>
       <ul>
         <li><b>Governance has setup cost.</b> Identity, approvals, audit, sandbox, and memory each have a configuration step. The setup wizards reduce it and do not remove it.</li>
-        <li><b>Pre-1.0 surfaces are marked as such.</b> The project distinguishes its stable core from surfaces still stabilizing. Read the status document rather than assuming uniform maturity.</li>
+        <li><b>Pre-1.0 surfaces are marked as such.</b> The project distinguishes its stable core from surfaces still stabilizing, and most of what 0.22.0 added (OIDC, multi-user mode, the container backend, evidence export, SIEM forwarding, hooks, and coding tools) is labeled experimental. Read the status document and the general availability readiness checklist rather than assuming uniform maturity.</li>
+        <li><b>A self-review is not a pen test.</b> The 0.22.0 threat model covers every new surface and its fixes each carry a regression test, but it was written by the engineer who built the features. The project says so, and lists an independent penetration test among the gates it cannot meet alone.</li>
         <li><b>Shared memory writes are deliberately awkward.</b> Draft gating is friction on purpose. Teams that route around it lose the property it provides.</li>
         <li><b>Audit needs a destination.</b> Configuring delivery and then not monitoring it produces the false confidence described above.</li>
         <li><b>Sandbox enforcement depends on the platform.</b> Optional enforcement layers vary by operating system, so verify what is actually active rather than what is configured.</li>

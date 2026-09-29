@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next';
 import { articles } from './knowledge-base/_content';
 
 const base = 'https://openagenticplatform.com';
-const lastModified = new Date('2026-08-29');
+const lastModified = new Date('2026-09-28');
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [

@@ -28,6 +28,7 @@ export const article: Article = {
   ],
   learnMore: [
     { label: 'Merced AI on GitHub', href: 'https://github.com/AlexMercedCoder/merced-ai', note: 'Source, installation guide, and the harness compatibility documentation.' },
+    { label: 'Merced AI 0.8.0 release', href: 'https://github.com/AlexMercedCoder/merced-ai/releases/tag/v0.8.0', note: 'Release notes for the current version, including behavior changes and MagAgent and Loro compatibility.' },
     { label: 'merced-ai on PyPI', href: 'https://pypi.org/project/merced-ai/', note: 'Installation and release history.' },
     { label: 'Open Agent Profile', href: 'https://github.com/alexmerced-oss/open-agent-profile', note: 'The profile specification that makes a bot portable between harnesses.' },
     { label: 'Agentic Graph Specification', href: 'https://github.com/AlexMercedCoder/agentic-graph-spec', note: 'The plan format Merced AI validates and plans against without executing.' },
@@ -43,7 +44,9 @@ function Body() {
       <p>
         Merced AI is a local-first broker for agent harnesses already installed on a machine. It discovers them,
         normalizes their non-interactive interfaces, and uses Open Agent Profile documents to create portable bots
-        that can be run against whichever harness is available.
+        that can be run against whichever harness is available. It has been at version 0.8.0 since September 2026,
+        and the project&apos;s own summary is one portable agent identity across the harnesses you already use, with
+        honest reports of what each one drops.
       </p>
       <p>
         The project is explicit that it is not another agent loop. The selected harness still owns model access,
@@ -125,6 +128,18 @@ function Body() {
         overrides for path resolution, is the difference between a discovery scan and an unintended execution
         surface.
       </p>
+      <p>
+        Since 0.8.0, every built-in adapter is described the same way a third-party one would be, and installed
+        packages can add adapters for harnesses the project does not ship, checked by a contract-test kit. Adding a
+        harness no longer requires a change to the broker itself.
+      </p>
+      <p>
+        Harnesses that speak the Agent Client Protocol are now driven over it when their launchers are installed:
+        Claude Code, Gemini CLI, Goose, and OpenCode. Replies stream, permission requests are shown as AAIS approvals
+        in the web UI or as a terminal prompt where Deny is the default, and Claude Code, Goose, and OpenCode resume
+        their own sessions instead of receiving the whole transcript again. Before 0.8.0, approval requests from a
+        child harness on the command line were denied silently.
+      </p>
 
       <h2 id="profiles-and-bots">Profiles and bots</h2>
       <p>
@@ -146,6 +161,12 @@ function Body() {
       <p>
         The separation is the point. A bot is a definition plus a routing preference, and the two can change
         independently. Moving a bot to a different harness is editing a binding rather than recreating an agent.
+      </p>
+      <p>
+        Profiles are discovered from the portable <code>.agents/</code> directory and from MagAgent&apos;s and
+        Loro&apos;s project directories. Two different profiles with one name in different directories are reported
+        as a conflict and refused, rather than one silently winning. Proposed changes to a profile&apos;s state arrive
+        in a reviewed inbox: they are validated on arrival and applied only after approval.
       </p>
 
       <h2 id="projection">Honest projection reports</h2>
@@ -179,6 +200,12 @@ function Body() {
         Reporting degradation rather than hiding it is a design principle worth generalizing well beyond this tool.
         Any abstraction over heterogeneous backends faces the same choice, and silent degradation is where trust in
         abstractions goes to die.
+      </p>
+      <p>
+        Version 0.8.0 tightened the reports further. Each harness descriptor now separates what the harness supports
+        from what the broker actually implements for it, and only the second is shown as supported. Projection
+        reports also list every profile section a prompt-context projection drops, so nothing is lost without being
+        named.
       </p>
 
       <h2 id="graphs">Read-only graph planning</h2>
@@ -243,6 +270,19 @@ function Body() {
         engineer, a reviewer with narrower permissions, and a documentation specialist are genuinely different
         agents, and pretending they are one agent with three hats loses the distinction that made the arrangement
         useful.
+      </p>
+      <p>
+        Group rooms can now isolate write-capable bots from each other. With worktrees enabled, each such bot works
+        in its own Git worktree and branch outside the project, so several can run at once without touching your
+        files; you compare their changes and apply one bot&apos;s patch only if it applies cleanly. Without
+        worktrees, write-capable bots that share a workspace take turns. A related 0.8.0 feature sends one profile
+        and prompt to several harnesses and scores the results with deterministic checks first, reporting any model
+        judge separately.
+      </p>
+      <p>
+        Merced AI can also be the thing an editor talks to. <code>merced-ai acp</code> serves a bot or a room as an
+        Agent Client Protocol agent for editors such as Zed, and the UI server has an A2A endpoint, which is
+        experimental. In both cases the chosen harness still runs the work.
       </p>
       <p>
         Durable, atomic session records matter for the ordinary reason. Work that spans more than one sitting needs
@@ -327,6 +367,8 @@ function Body() {
         <li><b>Policy still lives in the harness.</b> The broker routes; the harness enforces. A profile denying a tool is only enforced if the target harness can enforce it.</li>
         <li><b>Harness interfaces change between versions.</b> Discovery tracks versions for a reason. An upgrade can change a non-interactive interface.</li>
         <li><b>Fallback changes behavior.</b> Falling back to a second harness may mean different tools, different permissions, and different quality. Treat it as a deliberate configuration rather than a safety net.</li>
+        <li><b>The web UI moved ports.</b> Since 0.8.0, <code>merced-ai ui</code> defaults to port 8773 (it was 8765, which collided with Loro&apos;s web UI). Update bookmarks and A2A client configuration.</li>
+        <li><b>Newer harness features are detected, not assumed.</b> With MagAgent 1.4.0 and Loro 0.22.0, prompts travel through a private file instead of the command line; older versions still work with the previous behavior.</li>
         <li><b>At least one harness must be installed and authenticated.</b> Inventory and dry runs work without model access; real runs do not.</li>
         <li><b>Profile state is data an agent wrote.</b> Accumulated state should be reviewed rather than trusted, particularly when a profile moves between environments.</li>
       </ul>

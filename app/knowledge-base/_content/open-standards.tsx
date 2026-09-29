@@ -225,6 +225,10 @@ function Body() {
         provenance, risk, choices, decisions, and receipts; it does not expose private model reasoning or define the
         surrounding chat, tool, profile, or graph protocol.
       </p>
+      <p>
+        Its adoption also shows what a shared library does for a young standard. The Python support library&apos;s 0.2.0 release in September 2026 added a durable, multi-process
+        approval store, and MagAgent, Loro, and Merced AI moved onto it together rather than each maintaining its own.
+      </p>
 
       <h2 id="together">How the five fit together</h2>
       <p>

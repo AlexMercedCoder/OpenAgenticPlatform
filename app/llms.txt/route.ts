@@ -30,7 +30,7 @@ export function GET(): Response {
 Canonical URL: ${BASE}/
 Source: https://github.com/AlexMercedCoder/OpenAgenticPlatform
 Author: Alex Merced (https://www.alexmerced.com)
-Last updated: 2026-08-29
+Last updated: 2026-09-28
 
 ${section('Definition', [
   'An open agentic platform is an architecture in which data, models, execution, and interoperability remain',
@@ -42,7 +42,7 @@ ${section('Definition', [
 ${section('Architecture', [
   '1. Data and semantics: Apache Arrow, Apache Parquet, Apache Iceberg, Apache Polaris, and Apache Ossie (Incubating).',
   '2. Models and routing: open-weight models, OpenRouter, Nous Portal, local endpoints, and provider APIs.',
-  '3. Harnesses and brokers: OpenCode, Pi, MagAgent 1.1.1, Mag Command Center 1.0.0-rc.3, Loro 0.19.2, Merced AI 0.5.1, Hermes Agent, and Prime Agent.',
+  '3. Harnesses and brokers: OpenCode, Pi, MagAgent 1.4.0, Mag Command Center 1.0.0, Loro 0.22.0, Merced AI 0.8.0, Hermes Agent, and Prime Agent.',
   '4. Open standards: Agent Skills, Model Context Protocol (MCP), Open Agent Profile (OAP), Agentic Graph Specification (AGS), and Agent Approval Interchange Specification (AAIS).',
 ])}
 ## Knowledge base

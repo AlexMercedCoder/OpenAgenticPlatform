@@ -293,6 +293,7 @@ function Body() {
         <li><b>Gates in the wrong place.</b> A gate after the expensive fan-out has already spent the money. Place them before irreversibility and before cost.</li>
         <li><b>Graphs go stale.</b> A document referring to tools or systems that changed is confidently wrong. Validate them in continuous integration the way you would any other artifact.</li>
         <li><b>Harness support varies.</b> Some implementations validate and plan without executing. Check what your runtime actually does with a graph before depending on it.</li>
+        <li><b>Vendor extensions do not travel.</b> MagAgent can run a node through an MCP tool or an A2A agent using its own extension (experimental). Since 0.22.0, Loro refuses graphs with executor extensions it does not implement instead of running those nodes as ordinary model tasks. A graph that depends on an extension is only as portable as the extension.</li>
       </ul>
 
       <h2 id="openness">How it scores on openness</h2>

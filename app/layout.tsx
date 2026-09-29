@@ -66,7 +66,7 @@ const structuredData = {
       description: 'A four-layer architecture spanning data and semantics, models and routing, harnesses and brokers, and open standards.',
       mainEntityOfPage: { '@id': `${BASE}/#website` },
       author: { '@id': `${BASE}/#alex-merced` },
-      dateModified: '2026-08-31',
+      dateModified: '2026-09-28',
       inLanguage: 'en-US',
     },
     {
