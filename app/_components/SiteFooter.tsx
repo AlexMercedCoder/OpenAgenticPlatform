@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { communityLinks, connectLinks, networkGroups, newsletter } from '../_data/network';
+import { communityLinks, connectLinks, newsletter } from '../_data/network';
+import { getNetwork } from '../_lib/network';
 
 export function NewsletterBand() {
   return (
@@ -27,8 +28,28 @@ export function NewsletterBand() {
   );
 }
 
-export function SiteFooter() {
+export function NetworkCta() {
+  const { cta } = getNetwork();
+  if (!cta) return null;
   return (
+    <section className="network-cta" aria-label={cta.heading}>
+      <div className="wrap network-cta-inner">
+        <p className="network-cta-title">{cta.heading}</p>
+        <ul>
+          {cta.links.map((link) => (
+            <li key={link.url}><a href={link.url} rel="noopener" data-network-event={link.event}>{link.label} ↗</a></li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+export function SiteFooter() {
+  const { footer } = getNetwork();
+  return (
+    <>
+    <NetworkCta />
     <footer className="site-footer">
       <div className="wrap">
         <div className="footer-top">
@@ -37,16 +58,22 @@ export function SiteFooter() {
         </div>
 
         <nav className="footer-columns" aria-label="The Alex Merced network">
-          {networkGroups.map((group) => (
+          {footer.groups.map((group) => (
             <div key={group.title}>
               <p className="footer-col-title">{group.title}</p>
               <ul>
                 {group.links.map((link) => (
-                  <li key={link.href}><a href={link.href} rel="noopener">{link.label}</a></li>
+                  <li key={link.url}><a href={link.url} rel="noopener">{link.title}</a></li>
                 ))}
               </ul>
             </div>
           ))}
+          <div>
+            <p className="footer-col-title">The network</p>
+            <ul>
+              <li><a href={footer.allSitesUrl} rel="noopener">{footer.allSitesLabel} ↗</a></li>
+            </ul>
+          </div>
         </nav>
 
         <nav className="footer-columns secondary" aria-label="Community, events, and social">
@@ -92,5 +119,6 @@ export function SiteFooter() {
         </div>
       </div>
     </footer>
+    </>
   );
 }

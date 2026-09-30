@@ -6,6 +6,7 @@ import { kbManifest } from '../../_data/kb-manifest';
 import { SiteHeader } from '../../_components/SiteHeader';
 import { NewsletterBand, SiteFooter } from '../../_components/SiteFooter';
 import { articles, articlesBySlug } from '../_content';
+import { getNetwork } from '../../_lib/network';
 
 const kindLabel: Record<string, string> = {
   layer: 'Layer',
@@ -35,7 +36,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       type: 'article',
       images: [{ url: '/og.png', width: 1200, height: 630, alt: article.title }],
     },
-    twitter: { card: 'summary_large_image', title: article.title, description: article.summary, images: ['/og.png'] },
+    twitter: { card: 'summary_large_image', site: getNetwork().twitterSite, title: article.title, description: article.summary, images: ['/og.png'] },
   };
 }
 
@@ -59,7 +60,7 @@ export default async function KnowledgeBaseArticle({ params }: { params: Promise
         url,
         inLanguage: 'en-US',
         isPartOf: { '@type': 'WebSite', '@id': 'https://openagenticplatform.com/#website' },
-        author: { '@type': 'Person', name: 'Alex Merced', url: 'https://www.alexmerced.com' },
+        author: { '@id': 'https://alexmerced.com/#alexmerced' },
         publisher: { '@type': 'Organization', name: 'Open Agentic Platform', url: 'https://openagenticplatform.com/' },
         dateModified: '2026-09-28',
         keywords: article.keywords.join(', '),
