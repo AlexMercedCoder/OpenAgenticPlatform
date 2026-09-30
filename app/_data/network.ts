@@ -28,5 +28,5 @@ export const connectLinks: NetworkLink[] = [
   { label: 'Twitter/X', href: 'https://twitter.com/amdatalakehouse' },
   { label: 'Instagram', href: 'https://www.instagram.com/alexmercedcoder' },
   { label: 'TikTok', href: 'https://www.tiktok.com/@alexmercedcoder' },
-  { label: 'Email', href: 'mailto:dev@alexmerced.com' },
+  { label: 'Email', href: 'mailto:contact@alexmerced.com' },
 ];
