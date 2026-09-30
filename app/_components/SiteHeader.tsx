@@ -5,6 +5,7 @@ const navItems: NavItem[] = [
   { label: 'The stack', href: '/#stack' },
   { label: 'Knowledge base', href: '/knowledge-base' },
   { label: 'Openness test', href: '/#tests' },
+  { label: 'Openness scorecard', href: '/openness-scorecard' },
   { label: 'Build path', href: '/#build' },
   { label: 'Books', href: '/#books' },
   { label: 'Newsletter', href: '/#newsletter' },
@@ -19,6 +20,7 @@ export function SiteHeader() {
         <Link href="/#stack">The stack</Link>
         <Link href="/knowledge-base">Knowledge base</Link>
         <Link href="/#tests">Openness test</Link>
+        <Link href="/openness-scorecard">Scorecard</Link>
         <Link href="/#books">Books</Link>
         <a className="spec-link" href="https://github.com/AlexMercedCoder/OpenAgenticPlatform" rel="noopener">View source ↗</a>
       </nav>

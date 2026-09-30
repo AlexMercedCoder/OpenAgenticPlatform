@@ -5,52 +5,7 @@ import { SiteHeader } from './_components/SiteHeader';
 import { NewsletterBand, SiteFooter } from './_components/SiteFooter';
 import { aiBooks, bookPage } from './_data/books';
 import { kbManifest } from './_data/kb-manifest';
-
-type Component = { name: string; role: string; slug: string; href: string; example?: boolean };
-type Layer = { number: string; label: string; title: string; slug: string; color: string; summary: string; items: Component[] };
-
-const layers: Layer[] = [
-  { number:'01', label:'FOUNDATION', title:'Data & semantics', slug:'data-and-semantics', color:'lime', summary:'Give agents durable facts, portable records, and shared meaning.', items:[
-    { name:'Apache Arrow', role:'In-memory columnar format', slug:'apache-arrow', href:'https://arrow.apache.org' },
-    { name:'Apache Parquet', role:'Durable columnar files', slug:'apache-parquet', href:'https://parquet.apache.org' },
-    { name:'Apache Iceberg', role:'Open table format', slug:'apache-iceberg', href:'https://iceberg.apache.org' },
-    { name:'Apache Polaris', role:'Catalog & governance', slug:'apache-polaris', href:'https://polaris.apache.org' },
-    { name:'Apache Ossie', role:'Semantic metadata (Incubating)', slug:'apache-ossie', href:'https://ossie.apache.org' },
-  ] },
-  { number:'02', label:'INTELLIGENCE', title:'Models & routing', slug:'models-and-routing', color:'cyan', summary:'Choose models by task, policy, economics, and deployment needs.', items:[
-    { name:'Open-weight models', role:'Inspectable model artifacts', slug:'open-weight-models', href:'https://huggingface.co/models' },
-    { name:'OpenRouter', role:'Unified model routing', slug:'openrouter', href:'https://openrouter.ai' },
-    { name:'Nous Portal', role:'Models, tools & cloud', slug:'nous-portal', href:'https://portal.nousresearch.com' },
-    { name:'Local endpoints', role:'Control at the boundary', slug:'local-model-endpoints', href:'https://github.com/ggml-org/llama.cpp' },
-    { name:'Provider APIs', role:'Capability without lock-in', slug:'provider-apis', href:'https://docs.claude.com/en/api/overview' },
-  ] },
-  { number:'03', label:'EXECUTION', title:'Harnesses & brokers', slug:'harnesses-and-brokers', color:'amber', summary:'Turn intent into governed work with interchangeable runtimes.', items:[
-    { name:'OpenCode', role:'Terminal coding agent', slug:'opencode', href:'https://opencode.ai' },
-    { name:'Pi', role:'Agent harness', slug:'pi', href:'https://github.com/earendil-works/pi' },
-    { name:'MagAgent', role:'Memory-first personal agent', slug:'magagent', href:'https://alexmercedai.com/knowledge-base/magagent', example:true },
-    { name:'Mag Command Center', role:'Desktop cockpit for MagAgent', slug:'magagent', href:'https://alexmercedai.com/knowledge-base/magagent', example:true },
-    { name:'Loro', role:'Governed agent harness', slug:'loro', href:'https://alexmercedai.com/knowledge-base/loro', example:true },
-    { name:'Merced AI', role:'Agent broker', slug:'merced-ai', href:'https://alexmercedai.com/knowledge-base/merced-ai', example:true },
-    { name:'Hermes Agent', role:'Evolving personal agent', slug:'hermes-agent', href:'https://github.com/NousResearch/hermes-agent' },
-    { name:'Prime Agent', role:'Self-improving RLM agent', slug:'prime-agent', href:'https://github.com/PrimeIntellect-ai/prime-agent' },
-  ] },
-  { number:'04', label:'INTEROPERABILITY', title:'Open standards', slug:'open-standards', color:'pink', summary:'Make skills, context, profiles, and graphs portable across tools.', items:[
-    { name:'Agent Skills', role:'Reusable capability folders', slug:'agent-skills', href:'https://agentskills.io' },
-    { name:'MCP', role:'Tools, data & workflow connection', slug:'model-context-protocol', href:'https://modelcontextprotocol.io' },
-    { name:'OAP', role:'Portable agent profiles', slug:'open-agent-profile', href:'https://alexmercedai.com/knowledge-base/open-agent-profile', example:true },
-    { name:'AGS', role:'Portable agentic graphs', slug:'agentic-graph-specification', href:'https://alexmercedai.com/knowledge-base/agentic-graph-specification', example:true },
-    { name:'AAIS', role:'Portable human approvals', slug:'agent-approval-interchange-specification', href:'https://alexmercedai.com/knowledge-base/agent-approval-interchange-specification', example:true },
-  ] },
-];
-
-const tests: [string, string, string][] = [
-  ['Replaceable','Can one component be swapped without rebuilding the system?','replaceable'],
-  ['Inspectable','Can a builder understand what runs and why?','inspectable'],
-  ['Portable','Can identity, skills, context, and work move?','portable'],
-  ['Bounded','Are authority and approval requirements explicit?','bounded'],
-  ['Grounded','Do agents share durable data and semantic meaning?','grounded'],
-  ['Auditable','Can people reconstruct decisions and outcomes?','auditable'],
-];
+import { layers, tests } from './_data/stack';
 
 export default function Home() {
   return <main>
@@ -63,9 +18,9 @@ export default function Home() {
 
     <section className="definition" id="definition"><div className="wrap definition-grid"><p className="section-label">DEFINITION / 00</p><div><h2>Open components.<br/>Explicit contracts.<br/><em>Operational freedom.</em></h2><p>An open agentic platform is an architecture in which data, models, execution, and interoperability remain independently understandable and replaceable. “Open” may describe source, weights, formats, or interfaces. A trustworthy architecture labels the difference instead of flattening it.</p></div></div></section>
 
-    <section className="stack wrap" id="stack"><div className="section-intro"><p className="section-label">ARCHITECTURE / 01 TO 04</p><div><h2>Four layers.<br/>No mandatory vendor.</h2><p>Each layer answers a different question. Together they turn model capability into durable, governable work. Every name below has a full explanation in the <Link href="/knowledge-base">knowledge base</Link>. Names marked ↗ are example implementations Alex Merced builds; their full pages live on <a href="https://alexmercedai.com" rel="noopener">alexmercedai.com</a>.</p></div></div><div className="layer-list">{layers.map(layer=><article className={`layer-card ${layer.color}`} key={layer.number}><div className="layer-title"><span>{layer.number} / {layer.label}</span><h3>{layer.title}</h3><p>{layer.summary}</p><Link className="layer-kb-link" href={`/knowledge-base/${layer.slug}`}>Read the layer explainer →</Link></div><div className="component-list">{layer.items.map((item)=>item.example?<a href={item.href} rel="noopener" className="example" key={item.name}><b>{item.name}</b><span>{item.role} (example implementation)</span><i>↗</i></a>:<Link href={`/knowledge-base/${item.slug}`} key={item.name}><b>{item.name}</b><span>{item.role}</span><i>→</i></Link>)}</div></article>)}</div></section>
+    <section className="stack wrap" id="stack"><div className="section-intro"><p className="section-label">ARCHITECTURE / 01 TO 04</p><div><h2>Four layers.<br/>No mandatory vendor.</h2><p>Each layer answers a different question. Together they turn model capability into durable, governable work. Every name below has a full explanation in the <Link href="/knowledge-base">knowledge base</Link>. Names marked ↗ are example implementations Alex Merced builds; their full pages live on <a href="https://alexmercedai.com" rel="noopener">alexmercedai.com</a>.</p></div></div><div className="layer-list">{layers.map(layer=><article className={`layer-card ${layer.color}`} key={layer.number}><div className="layer-title"><span>{layer.number} / {layer.label}</span><h3>{layer.title}</h3><p>{layer.summary}</p><Link className="layer-kb-link" href={`/knowledge-base/${layer.slug}`}>Read the layer explainer →</Link></div><div className="component-list">{layer.items.map((item)=>item.example?<a href={item.href} rel="noopener" className="example" key={item.name}><b>{item.name}</b><span>{item.role} (example implementation)</span><i>↗</i></a>:<Link href={`/knowledge-base/${item.slug}`} key={item.name}><b>{item.name}</b><span>{item.role}</span><i>→</i></Link>)}</div></article>)}</div><aside className="diagram-download" aria-labelledby="diagram-download-title"><div><p className="section-label">DOWNLOAD / REFERENCE STACK</p><h3 id="diagram-download-title">Use the diagram in your own docs.</h3><p>The four layers and their components as one image. Free to reuse and adapt under <a href="https://creativecommons.org/licenses/by/4.0/" rel="license noopener">CC BY 4.0</a>; credit Alex Merced, openagenticplatform.com.</p></div><ul><li><a href="/open-agentic-platform-stack.svg" download data-network-event="diagram_download_svg">SVG, adapts to light and dark ↓</a></li><li><a href="/open-agentic-platform-stack-light.png" download data-network-event="diagram_download_png">PNG, light, 2400 px ↓</a></li><li><a href="/open-agentic-platform-stack-dark.png" download data-network-event="diagram_download_png">PNG, dark, 2400 px ↓</a></li></ul></aside></section>
 
-    <section className="openness" id="tests"><div className="wrap"><div className="section-intro light"><p className="section-label">THE OPENNESS TEST / 06</p><div><h2>Open is a property<br/>of the whole system.</h2><p>A pile of open-source parts can still produce a closed architecture. Test the relationships as carefully as the licenses.</p></div></div><div className="test-grid">{tests.map(([title,body,slug],index)=><article key={title}><span>{String(index+1).padStart(2,'0')}</span><h3><Link href={`/knowledge-base/${slug}`}>{title}</Link></h3><p>{body}</p></article>)}</div></div></section>
+    <section className="openness" id="tests"><div className="wrap"><div className="section-intro light"><p className="section-label">THE OPENNESS TEST / 06</p><div><h2>Open is a property<br/>of the whole system.</h2><p>A pile of open-source parts can still produce a closed architecture. Test the relationships as carefully as the licenses.</p></div></div><div className="test-grid">{tests.map(([title,body,slug],index)=><article key={title}><span>{String(index+1).padStart(2,'0')}</span><h3><Link href={`/knowledge-base/${slug}`}>{title}</Link></h3><p>{body}</p></article>)}</div><p className="openness-cta"><Link href="/openness-scorecard" className="action primary" data-network-event="openness_scorecard_open">SCORE YOUR STACK →</Link><span>Interactive, runs in your browser. Download the result as JSON or print it.</span></p></div></section>
 
     <section className="wrap" id="scorecards" style={{paddingBlock:'4rem'}}>
       <p className="section-label">WORKED SCORECARDS</p>
@@ -85,7 +40,7 @@ export default function Home() {
           </tbody>
         </table>
       </div>
-      <p>Use the <a href="/knowledge-base">knowledge base</a> to define each criterion, then repeat the score with evidence from your actual deployment.</p>
+      <p>Use the <Link href="/knowledge-base">knowledge base</Link> to define each criterion, then score your own deployment with evidence in the <Link href="/openness-scorecard">interactive openness scorecard</Link>.</p>
     </section>
 
     <section className="build wrap" id="build"><div className="section-intro"><p className="section-label">A PRACTICAL PATH / 06</p><div><h2>Build from the ground up.</h2><p>Start with durable context. Add intelligence and execution only after control boundaries are clear.</p></div></div><ol><li><span>1</span><div><b>Ground the system</b><p>Choose open formats, a catalog, and a semantic layer that agents and people can share.</p></div></li><li><span>2</span><div><b>Define the contracts</b><p>Express identity, skills, tools, workflows, policy, and approval points in portable forms.</p></div></li><li><span>3</span><div><b>Compose the runtime</b><p>Select models, routers, brokers, and harnesses according to the work, not brand gravity.</p></div></li><li><span>4</span><div><b>Observe and evolve</b><p>Retain evidence, evaluate outcomes, and replace components as requirements change.</p></div></li></ol></section>

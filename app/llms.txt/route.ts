@@ -31,7 +31,7 @@ export function GET(): Response {
 Canonical URL: ${BASE}/
 Source: https://github.com/AlexMercedCoder/OpenAgenticPlatform
 Author: Alex Merced (https://alexmerced.com)
-Last updated: 2026-09-28
+Last updated: 2026-09-29
 
 ${section('Definition', [
   'An open agentic platform is an architecture in which data, models, execution, and interoperability remain',
@@ -62,6 +62,12 @@ ${exampleImplementations.map((entry) => `- [${entry.name}](${entry.href}): ${ent
 Six properties that determine whether an architecture is genuinely open.
 
 ${conceptArticles.map((entry) => `- [${entry.title}](${BASE}/knowledge-base/${entry.slug}): ${entry.summary}`).join('\n')}
+
+Score a stack against all six: [Openness scorecard](${BASE}/openness-scorecard) (interactive, runs in the browser, 0 to 2 per test with evidence, total out of 12). Blank machine-readable version: ${BASE}/openness-scorecard.json
+
+### Downloads
+
+- [Reference stack diagram, SVG](${BASE}/open-agentic-platform-stack.svg): the four layers and their components; adapts to light and dark. PNG versions: ${BASE}/open-agentic-platform-stack-light.png and ${BASE}/open-agentic-platform-stack-dark.png. CC BY 4.0, attribution Alex Merced.
 
 ### Reference
 

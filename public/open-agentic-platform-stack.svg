@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 871" width="1200" height="871" class="oap" role="img" aria-labelledby="oap-auto-title oap-auto-desc">
+<title id="oap-auto-title">Open agentic platform reference stack</title>
+<desc id="oap-auto-desc">Four layers, foundation at the bottom: 01 Data &amp; semantics: Apache Arrow, Apache Parquet, Apache Iceberg, Apache Polaris, Apache Ossie. 02 Models &amp; routing: Open-weight models, OpenRouter, Nous Portal, Local endpoints, Provider APIs. 03 Harnesses &amp; brokers: OpenCode, Pi, MagAgent, Mag Command Center, Loro, Merced AI, Hermes Agent, Prime Agent. 04 Open standards: Agent Skills, MCP, OAP, AGS, AAIS. The stack rests on your policies, your infrastructure, and your control. Diagram by Alex Merced, CC BY 4.0, openagenticplatform.com.</desc>
+<style>
+.oap { --bg: #f3f0e8; --band: #fffdf6; --chip: #f3f0e8; --ink: #0c0f10; --muted: #444844; --line: #8a877f; --lime: #3f6212; --cyan: #0e7490; --amber: #a16207; --pink: #be185d; }
+@media (prefers-color-scheme: dark) { .oap:not(.oap-light) { --bg: #0c0f10; --band: #151a1a; --chip: #0c0f10; --ink: #f2f0ea; --muted: #b5bab6; --line: #404644; --lime: #c7ff57; --cyan: #65e8ff; --amber: #ffbe42; --pink: #ff71a8; } }
+.oap.oap-dark { --bg: #0c0f10; --band: #151a1a; --chip: #0c0f10; --ink: #f2f0ea; --muted: #b5bab6; --line: #404644; --lime: #c7ff57; --cyan: #65e8ff; --amber: #ffbe42; --pink: #ff71a8; }
+.oap text { font-family: Arial, Helvetica, 'Liberation Sans', sans-serif; fill: var(--ink); }
+.oap .bg { fill: var(--bg); }
+.oap .band { fill: var(--band); stroke: var(--line); stroke-width: 1.5; }
+.oap .chip { fill: var(--chip); stroke-width: 1.5; }
+.oap .chip.example { stroke-dasharray: 5 4; }
+.oap .title { font-size: 34px; font-weight: 900; letter-spacing: -0.5px; }
+.oap .subtitle { font-size: 17px; fill: var(--muted); }
+.oap .kicker { font-size: 12px; font-weight: 700; letter-spacing: 2px; }
+.oap .name { font-size: 24px; font-weight: 900; }
+.oap .summary { font-size: 15px; fill: var(--muted); }
+.oap .chiptext { font-size: 14.5px; font-weight: 600; }
+.oap .base { font-size: 13px; font-weight: 700; letter-spacing: 2px; fill: var(--muted); }
+.oap .foot { font-size: 13.5px; fill: var(--muted); }
+</style>
+<rect class="bg" width="1200" height="871"/>
+<text class="title" x="40" y="62">OPEN AGENTIC PLATFORM REFERENCE STACK</text>
+<text class="subtitle" x="40" y="94">Four layers, each replaceable on its own. A stack, not a suite.</text>
+<rect class="band" x="40" y="128" width="1120" height="134" rx="4"/>
+<rect x="40" y="128" width="8" height="134" style="fill: var(--pink)"/>
+<text class="kicker" x="70" y="162" style="fill: var(--pink)">04 / INTEROPERABILITY</text>
+<text class="name" x="70" y="194">OPEN STANDARDS</text>
+<text class="summary" x="70" y="220">Make skills, context, profiles,</text>
+<text class="summary" x="70" y="241">and graphs portable across tools.</text>
+<rect class="chip" x="425" y="178" width="127" height="34" rx="17" style="stroke: var(--pink)"/>
+<text class="chiptext" x="488.5" y="200" text-anchor="middle">Agent Skills</text>
+<rect class="chip" x="562" y="178" width="54" height="34" rx="17" style="stroke: var(--pink)"/>
+<text class="chiptext" x="589" y="200" text-anchor="middle">MCP</text>
+<rect class="chip example" x="626" y="178" width="135" height="34" rx="17" style="stroke: var(--pink)"/>
+<text class="chiptext" x="693.5" y="200" text-anchor="middle">OAP (example)</text>
+<rect class="chip example" x="771" y="178" width="135" height="34" rx="17" style="stroke: var(--pink)"/>
+<text class="chiptext" x="838.5" y="200" text-anchor="middle">AGS (example)</text>
+<rect class="chip example" x="916" y="178" width="143" height="34" rx="17" style="stroke: var(--pink)"/>
+<text class="chiptext" x="987.5" y="200" text-anchor="middle">AAIS (example)</text>
+<rect class="band" x="40" y="276" width="1120" height="134" rx="4"/>
+<rect x="40" y="276" width="8" height="134" style="fill: var(--amber)"/>
+<text class="kicker" x="70" y="310" style="fill: var(--amber)">03 / EXECUTION</text>
+<text class="name" x="70" y="342">HARNESSES &amp; BROKERS</text>
+<text class="summary" x="70" y="368">Turn intent into governed work</text>
+<text class="summary" x="70" y="389">with interchangeable runtimes.</text>
+<rect class="chip" x="425" y="304" width="95" height="34" rx="17" style="stroke: var(--amber)"/>
+<text class="chiptext" x="472.5" y="326" text-anchor="middle">OpenCode</text>
+<rect class="chip" x="530" y="304" width="46" height="34" rx="17" style="stroke: var(--amber)"/>
+<text class="chiptext" x="553" y="326" text-anchor="middle">Pi</text>
+<rect class="chip example" x="586" y="304" width="176" height="34" rx="17" style="stroke: var(--amber)"/>
+<text class="chiptext" x="674" y="326" text-anchor="middle">MagAgent (example)</text>
+<rect class="chip example" x="772" y="304" width="257" height="34" rx="17" style="stroke: var(--amber)"/>
+<text class="chiptext" x="900.5" y="326" text-anchor="middle">Mag Command Center (example)</text>
+<rect class="chip example" x="425" y="348" width="143" height="34" rx="17" style="stroke: var(--amber)"/>
+<text class="chiptext" x="496.5" y="370" text-anchor="middle">Loro (example)</text>
+<rect class="chip example" x="578" y="348" width="184" height="34" rx="17" style="stroke: var(--amber)"/>
+<text class="chiptext" x="670" y="370" text-anchor="middle">Merced AI (example)</text>
+<rect class="chip" x="772" y="348" width="127" height="34" rx="17" style="stroke: var(--amber)"/>
+<text class="chiptext" x="835.5" y="370" text-anchor="middle">Hermes Agent</text>
+<rect class="chip" x="909" y="348" width="119" height="34" rx="17" style="stroke: var(--amber)"/>
+<text class="chiptext" x="968.5" y="370" text-anchor="middle">Prime Agent</text>
+<rect class="band" x="40" y="424" width="1120" height="134" rx="4"/>
+<rect x="40" y="424" width="8" height="134" style="fill: var(--cyan)"/>
+<text class="kicker" x="70" y="458" style="fill: var(--cyan)">02 / INTELLIGENCE</text>
+<text class="name" x="70" y="490">MODELS &amp; ROUTING</text>
+<text class="summary" x="70" y="516">Choose models by task, policy,</text>
+<text class="summary" x="70" y="537">economics, and deployment needs.</text>
+<rect class="chip" x="425" y="452" width="176" height="34" rx="17" style="stroke: var(--cyan)"/>
+<text class="chiptext" x="513" y="474" text-anchor="middle">Open-weight models</text>
+<rect class="chip" x="611" y="452" width="111" height="34" rx="17" style="stroke: var(--cyan)"/>
+<text class="chiptext" x="666.5" y="474" text-anchor="middle">OpenRouter</text>
+<rect class="chip" x="732" y="452" width="119" height="34" rx="17" style="stroke: var(--cyan)"/>
+<text class="chiptext" x="791.5" y="474" text-anchor="middle">Nous Portal</text>
+<rect class="chip" x="861" y="452" width="152" height="34" rx="17" style="stroke: var(--cyan)"/>
+<text class="chiptext" x="937" y="474" text-anchor="middle">Local endpoints</text>
+<rect class="chip" x="425" y="496" width="135" height="34" rx="17" style="stroke: var(--cyan)"/>
+<text class="chiptext" x="492.5" y="518" text-anchor="middle">Provider APIs</text>
+<rect class="band" x="40" y="572" width="1120" height="155" rx="4"/>
+<rect x="40" y="572" width="8" height="155" style="fill: var(--lime)"/>
+<text class="kicker" x="70" y="606" style="fill: var(--lime)">01 / FOUNDATION</text>
+<text class="name" x="70" y="638">DATA &amp; SEMANTICS</text>
+<text class="summary" x="70" y="664">Give agents durable facts,</text>
+<text class="summary" x="70" y="685">portable records, and shared</text>
+<text class="summary" x="70" y="706">meaning.</text>
+<rect class="chip" x="425" y="610.5" width="127" height="34" rx="17" style="stroke: var(--lime)"/>
+<text class="chiptext" x="488.5" y="632.5" text-anchor="middle">Apache Arrow</text>
+<rect class="chip" x="562" y="610.5" width="143" height="34" rx="17" style="stroke: var(--lime)"/>
+<text class="chiptext" x="633.5" y="632.5" text-anchor="middle">Apache Parquet</text>
+<rect class="chip" x="715" y="610.5" width="143" height="34" rx="17" style="stroke: var(--lime)"/>
+<text class="chiptext" x="786.5" y="632.5" text-anchor="middle">Apache Iceberg</text>
+<rect class="chip" x="868" y="610.5" width="143" height="34" rx="17" style="stroke: var(--lime)"/>
+<text class="chiptext" x="939.5" y="632.5" text-anchor="middle">Apache Polaris</text>
+<rect class="chip" x="425" y="654.5" width="127" height="34" rx="17" style="stroke: var(--lime)"/>
+<text class="chiptext" x="488.5" y="676.5" text-anchor="middle">Apache Ossie</text>
+<rect x="40" y="741" width="1120" height="46" rx="4" style="fill: none; stroke: var(--line); stroke-width: 1.5; stroke-dasharray: 6 5"/>
+<text class="base" x="226.66666666666666" y="769" text-anchor="middle">YOUR POLICIES</text>
+<text class="base" x="600" y="769" text-anchor="middle">YOUR INFRASTRUCTURE</text>
+<text class="base" x="973.3333333333334" y="769" text-anchor="middle">YOUR CONTROL</text>
+<text class="foot" x="40" y="821">Dashed chips are example implementations by Alex Merced. Other names are illustrative, not endorsements.</text>
+<text class="foot" x="40" y="843">Diagram: Alex Merced, openagenticplatform.com. License: CC BY 4.0 (creativecommons.org/licenses/by/4.0).</text>
+</svg>
