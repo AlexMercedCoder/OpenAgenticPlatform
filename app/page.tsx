@@ -3,10 +3,10 @@ import Image from 'next/image';
 import WebMCP from './WebMCP';
 import { SiteHeader } from './_components/SiteHeader';
 import { NewsletterBand, SiteFooter } from './_components/SiteFooter';
-import { aiBooks } from './_data/books';
+import { aiBooks, bookPage } from './_data/books';
 import { kbManifest } from './_data/kb-manifest';
 
-type Component = { name: string; role: string; slug: string; href: string };
+type Component = { name: string; role: string; slug: string; href: string; example?: boolean };
 type Layer = { number: string; label: string; title: string; slug: string; color: string; summary: string; items: Component[] };
 
 const layers: Layer[] = [
@@ -27,19 +27,19 @@ const layers: Layer[] = [
   { number:'03', label:'EXECUTION', title:'Harnesses & brokers', slug:'harnesses-and-brokers', color:'amber', summary:'Turn intent into governed work with interchangeable runtimes.', items:[
     { name:'OpenCode', role:'Terminal coding agent', slug:'opencode', href:'https://opencode.ai' },
     { name:'Pi', role:'Agent harness', slug:'pi', href:'https://github.com/earendil-works/pi' },
-    { name:'MagAgent', role:'Memory-first personal agent', slug:'magagent', href:'https://github.com/AlexMercedCoder/MagAgent' },
-    { name:'Mag Command Center', role:'Desktop cockpit for MagAgent', slug:'magagent', href:'https://github.com/AlexMercedCoder/MagCommandCenter/releases/tag/v1.0.0' },
-    { name:'Loro', role:'Governed agent harness', slug:'loro', href:'https://github.com/alexmerced-oss/loro' },
-    { name:'Merced AI', role:'Agent broker', slug:'merced-ai', href:'https://github.com/AlexMercedCoder/merced-ai' },
+    { name:'MagAgent', role:'Memory-first personal agent', slug:'magagent', href:'https://alexmercedai.com/knowledge-base/magagent', example:true },
+    { name:'Mag Command Center', role:'Desktop cockpit for MagAgent', slug:'magagent', href:'https://alexmercedai.com/knowledge-base/magagent', example:true },
+    { name:'Loro', role:'Governed agent harness', slug:'loro', href:'https://alexmercedai.com/knowledge-base/loro', example:true },
+    { name:'Merced AI', role:'Agent broker', slug:'merced-ai', href:'https://alexmercedai.com/knowledge-base/merced-ai', example:true },
     { name:'Hermes Agent', role:'Evolving personal agent', slug:'hermes-agent', href:'https://github.com/NousResearch/hermes-agent' },
     { name:'Prime Agent', role:'Self-improving RLM agent', slug:'prime-agent', href:'https://github.com/PrimeIntellect-ai/prime-agent' },
   ] },
   { number:'04', label:'INTEROPERABILITY', title:'Open standards', slug:'open-standards', color:'pink', summary:'Make skills, context, profiles, and graphs portable across tools.', items:[
     { name:'Agent Skills', role:'Reusable capability folders', slug:'agent-skills', href:'https://agentskills.io' },
     { name:'MCP', role:'Tools, data & workflow connection', slug:'model-context-protocol', href:'https://modelcontextprotocol.io' },
-    { name:'OAP', role:'Portable agent profiles', slug:'open-agent-profile', href:'https://github.com/alexmerced-oss/open-agent-profile' },
-    { name:'AGS', role:'Portable agentic graphs', slug:'agentic-graph-specification', href:'https://github.com/AlexMercedCoder/agentic-graph-spec' },
-    { name:'AAIS', role:'Portable human approvals', slug:'agent-approval-interchange-specification', href:'https://github.com/alexmerced-oss/agent-approval-interchange-spec' },
+    { name:'OAP', role:'Portable agent profiles', slug:'open-agent-profile', href:'https://alexmercedai.com/knowledge-base/open-agent-profile', example:true },
+    { name:'AGS', role:'Portable agentic graphs', slug:'agentic-graph-specification', href:'https://alexmercedai.com/knowledge-base/agentic-graph-specification', example:true },
+    { name:'AAIS', role:'Portable human approvals', slug:'agent-approval-interchange-specification', href:'https://alexmercedai.com/knowledge-base/agent-approval-interchange-specification', example:true },
   ] },
 ];
 
@@ -52,18 +52,6 @@ const tests: [string, string, string][] = [
   ['Auditable','Can people reconstruct decisions and outcomes?','auditable'],
 ];
 
-const booksStructuredData = {
-  '@context': 'https://schema.org',
-  '@type': 'ItemList',
-  name: 'AI and agentic systems books by Alex Merced',
-  numberOfItems: aiBooks.length,
-  itemListElement: aiBooks.map((book, index) => ({
-    '@type': 'ListItem',
-    position: index + 1,
-    item: { '@type': 'Book', name: book.title, description: book.description, url: book.href, author: { '@type': 'Person', name: 'Alex Merced' } },
-  })),
-};
-
 export default function Home() {
   return <main>
     <WebMCP knowledgeBase={kbManifest} />
@@ -75,7 +63,7 @@ export default function Home() {
 
     <section className="definition" id="definition"><div className="wrap definition-grid"><p className="section-label">DEFINITION / 00</p><div><h2>Open components.<br/>Explicit contracts.<br/><em>Operational freedom.</em></h2><p>An open agentic platform is an architecture in which data, models, execution, and interoperability remain independently understandable and replaceable. “Open” may describe source, weights, formats, or interfaces. A trustworthy architecture labels the difference instead of flattening it.</p></div></div></section>
 
-    <section className="stack wrap" id="stack"><div className="section-intro"><p className="section-label">ARCHITECTURE / 01 TO 04</p><div><h2>Four layers.<br/>No mandatory vendor.</h2><p>Each layer answers a different question. Together they turn model capability into durable, governable work. Every name below has a full explanation in the <Link href="/knowledge-base">knowledge base</Link>.</p></div></div><div className="layer-list">{layers.map(layer=><article className={`layer-card ${layer.color}`} key={layer.number}><div className="layer-title"><span>{layer.number} / {layer.label}</span><h3>{layer.title}</h3><p>{layer.summary}</p><Link className="layer-kb-link" href={`/knowledge-base/${layer.slug}`}>Read the layer explainer →</Link></div><div className="component-list">{layer.items.map((item)=><Link href={`/knowledge-base/${item.slug}`} key={item.name}><b>{item.name}</b><span>{item.role}</span><i>→</i></Link>)}</div></article>)}</div></section>
+    <section className="stack wrap" id="stack"><div className="section-intro"><p className="section-label">ARCHITECTURE / 01 TO 04</p><div><h2>Four layers.<br/>No mandatory vendor.</h2><p>Each layer answers a different question. Together they turn model capability into durable, governable work. Every name below has a full explanation in the <Link href="/knowledge-base">knowledge base</Link>. Names marked ↗ are example implementations Alex Merced builds; their full pages live on <a href="https://alexmercedai.com" rel="noopener">alexmercedai.com</a>.</p></div></div><div className="layer-list">{layers.map(layer=><article className={`layer-card ${layer.color}`} key={layer.number}><div className="layer-title"><span>{layer.number} / {layer.label}</span><h3>{layer.title}</h3><p>{layer.summary}</p><Link className="layer-kb-link" href={`/knowledge-base/${layer.slug}`}>Read the layer explainer →</Link></div><div className="component-list">{layer.items.map((item)=>item.example?<a href={item.href} rel="noopener" className="example" key={item.name}><b>{item.name}</b><span>{item.role} (example implementation)</span><i>↗</i></a>:<Link href={`/knowledge-base/${item.slug}`} key={item.name}><b>{item.name}</b><span>{item.role}</span><i>→</i></Link>)}</div></article>)}</div></section>
 
     <section className="openness" id="tests"><div className="wrap"><div className="section-intro light"><p className="section-label">THE OPENNESS TEST / 06</p><div><h2>Open is a property<br/>of the whole system.</h2><p>A pile of open-source parts can still produce a closed architecture. Test the relationships as carefully as the licenses.</p></div></div><div className="test-grid">{tests.map(([title,body,slug],index)=><article key={title}><span>{String(index+1).padStart(2,'0')}</span><h3><Link href={`/knowledge-base/${slug}`}>{title}</Link></h3><p>{body}</p></article>)}</div></div></section>
 
@@ -87,12 +75,12 @@ export default function Home() {
         <table style={{width:'100%',borderCollapse:'collapse',minWidth:620,textAlign:'left'}}>
           <thead><tr><th>Test</th><th>Composable stack</th><th>Single-suite stack</th></tr></thead>
           <tbody>
-            <tr><th>Replaceable</th><td>2 — engine and model APIs are swappable</td><td>0 — proprietary orchestration couples both</td></tr>
-            <tr><th>Inspectable</th><td>2 — prompts, tools, and traces are exported</td><td>1 — console shows traces but no export</td></tr>
-            <tr><th>Portable</th><td>2 — profile and work use open schemas</td><td>0 — agent state is trapped in the suite</td></tr>
-            <tr><th>Bounded</th><td>2 — explicit tool scopes and approvals</td><td>1 — role permissions without per-action approval</td></tr>
-            <tr><th>Grounded</th><td>2 — governed metrics and versioned tables</td><td>1 — connected data without shared metrics</td></tr>
-            <tr><th>Auditable</th><td>2 — run, approval, and data versions recorded</td><td>1 — partial logs with short retention</td></tr>
+            <tr><th>Replaceable</th><td>2: engine and model APIs are swappable</td><td>0: proprietary orchestration couples both</td></tr>
+            <tr><th>Inspectable</th><td>2: prompts, tools, and traces are exported</td><td>1: console shows traces but no export</td></tr>
+            <tr><th>Portable</th><td>2: profile and work use open schemas</td><td>0: agent state is trapped in the suite</td></tr>
+            <tr><th>Bounded</th><td>2: explicit tool scopes and approvals</td><td>1: role permissions without per-action approval</td></tr>
+            <tr><th>Grounded</th><td>2: governed metrics and versioned tables</td><td>1: connected data without shared metrics</td></tr>
+            <tr><th>Auditable</th><td>2: run, approval, and data versions recorded</td><td>1: partial logs with short retention</td></tr>
             <tr><th>Total</th><td><strong>12 / 12</strong></td><td><strong>4 / 12</strong></td></tr>
           </tbody>
         </table>
@@ -102,12 +90,11 @@ export default function Home() {
 
     <section className="build wrap" id="build"><div className="section-intro"><p className="section-label">A PRACTICAL PATH / 06</p><div><h2>Build from the ground up.</h2><p>Start with durable context. Add intelligence and execution only after control boundaries are clear.</p></div></div><ol><li><span>1</span><div><b>Ground the system</b><p>Choose open formats, a catalog, and a semantic layer that agents and people can share.</p></div></li><li><span>2</span><div><b>Define the contracts</b><p>Express identity, skills, tools, workflows, policy, and approval points in portable forms.</p></div></li><li><span>3</span><div><b>Compose the runtime</b><p>Select models, routers, brokers, and harnesses according to the work, not brand gravity.</p></div></li><li><span>4</span><div><b>Observe and evolve</b><p>Retain evidence, evaluate outcomes, and replace components as requirements change.</p></div></li></ol></section>
 
-    <section className="books" id="books"><div className="wrap"><div className="books-head"><div><p className="section-label">THE OPEN AI LIBRARY / 07</p><h2>Read the systems<br/>behind the stack.</h2></div><div><p>Alex Merced has written {aiBooks.length} nonfiction books on AI, agents, semantic context, production architecture, and the data foundations beneath them.</p><a href="https://books.alexmerced.com" rel="noopener">Browse the complete book catalog ↗</a></div></div><div className="book-shelf" role="list" aria-label="AI books by Alex Merced">{aiBooks.map((book,index)=><article className="book-card" role="listitem" key={book.title}><a href={book.href} rel="noopener"><div className="book-cover"><Image src={book.cover} alt={`Cover of ${book.title}`} width={350} height={500} sizes="(max-width: 520px) 220px, 260px"/><span>{String(index+1).padStart(2,'0')}</span></div><div className="book-copy"><h3>{book.title}</h3><p>{book.description}</p><b>View book ↗</b></div></a></article>)}</div><p className="shelf-note">Scroll to explore all {aiBooks.length} titles →</p></div></section>
+    <section className="books" id="books"><div className="wrap"><div className="books-head"><div><p className="section-label">THE OPEN AI LIBRARY / 07</p><h2>Read the systems<br/>behind the stack.</h2></div><div><p>Alex Merced has written {aiBooks.length} nonfiction books on AI, agents, semantic context, production architecture, and the data foundations beneath them.</p><a href="https://books.alexmerced.com" rel="noopener">Browse the complete book catalog ↗</a></div></div><div className="book-shelf" role="list" aria-label="AI books by Alex Merced">{aiBooks.map((book,index)=><article className="book-card" role="listitem" key={book.title}><a href={bookPage(book)} rel="noopener"><div className="book-cover"><Image src={book.cover} alt={`Cover of ${book.title}`} width={350} height={500} sizes="(max-width: 520px) 220px, 260px"/><span>{String(index+1).padStart(2,'0')}</span></div><div className="book-copy"><h3>{book.title}</h3><p>{book.description}</p><b>About the book ↗</b></div></a><a className="book-buy" href={book.amazon} rel="noopener" data-network-event="book_amazon_click">Buy on Amazon ↗</a></article>)}</div><p className="shelf-note">Scroll to explore all {aiBooks.length} titles →</p></div></section>
 
     <section className="closing"><div className="wrap"><p className="section-label">THE PRINCIPLE</p><h2>Own the architecture.<br/><em>Keep the options.</em></h2><Link href="/knowledge-base">EXPLORE THE KNOWLEDGE BASE →</Link></div></section>
 
     <NewsletterBand />
     <SiteFooter />
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(booksStructuredData) }} />
   </main>;
 }

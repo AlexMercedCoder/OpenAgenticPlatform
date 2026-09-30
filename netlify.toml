@@ -9,3 +9,42 @@
   command = "npm run dev"
   targetPort = 3000
   framework = "#auto"
+
+# P4.5 (2026-09-29): Alex Merced's own project pages live only on alexmercedai.com.
+# Recorded in docs-and-audits/network-audit-2026-09-29/redirect-maps/openagenticplatform.com.csv
+[[redirects]]
+  from = "/knowledge-base/magagent"
+  to = "https://alexmercedai.com/knowledge-base/magagent"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/knowledge-base/loro"
+  to = "https://alexmercedai.com/knowledge-base/loro"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/knowledge-base/merced-ai"
+  to = "https://alexmercedai.com/knowledge-base/merced-ai"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/knowledge-base/open-agent-profile"
+  to = "https://alexmercedai.com/knowledge-base/open-agent-profile"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/knowledge-base/agentic-graph-specification"
+  to = "https://alexmercedai.com/knowledge-base/agentic-graph-specification"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/knowledge-base/agent-approval-interchange-specification"
+  to = "https://alexmercedai.com/knowledge-base/agent-approval-interchange-specification"
+  status = 301
+  force = true
+

@@ -4,6 +4,7 @@ import WebMCP from '../WebMCP';
 import { kbManifest } from '../_data/kb-manifest';
 import { SiteHeader } from '../_components/SiteHeader';
 import { NewsletterBand, SiteFooter } from '../_components/SiteFooter';
+import { examplesFor } from '../_data/examples';
 import { articles, conceptArticles, glossaryArticles, layerArticles, technologiesFor } from './_content';
 
 export const metadata: Metadata = {
@@ -93,6 +94,13 @@ export default function KnowledgeBaseIndex() {
                   <b>{entry.title}</b>
                   <p>{entry.summary}</p>
                 </Link>
+              ))}
+              {examplesFor(layer.slug).map((entry) => (
+                <a className="kb-card example" href={entry.href} rel="noopener" key={entry.name}>
+                  <span>EXAMPLE IMPLEMENTATION / ALEXMERCEDAI.COM ↗</span>
+                  <b>{entry.name}</b>
+                  <p>{entry.summary}</p>
+                </a>
               ))}
             </div>
           </section>

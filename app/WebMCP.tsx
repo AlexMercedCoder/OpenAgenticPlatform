@@ -190,7 +190,7 @@ export default function WebMCP({ knowledgeBase = [] }: { knowledgeBase?: KbEntry
         inputSchema: noInput,
         execute: async () => ({
           count: aiBooks.length,
-          books: aiBooks.map(({ title, description, href }) => ({ title, description, url: href })),
+          books: aiBooks.map(({ title, description, slug, amazon }) => ({ title, description, url: `https://books.alexmerced.com/books/${slug}/`, amazon })),
           completeCatalog: 'https://books.alexmerced.com/',
         }),
         annotations: { readOnlyHint: true, untrustedContentHint: false },

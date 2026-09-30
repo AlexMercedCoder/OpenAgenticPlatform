@@ -1,5 +1,6 @@
 import { articles, layerArticles, technologiesFor, conceptArticles, glossaryArticles } from '../knowledge-base/_content';
 import { aiBooks } from '../_data/books';
+import { exampleImplementations } from '../_data/examples';
 
 export const dynamic = 'force-static';
 
@@ -29,7 +30,7 @@ export function GET(): Response {
 
 Canonical URL: ${BASE}/
 Source: https://github.com/AlexMercedCoder/OpenAgenticPlatform
-Author: Alex Merced (https://www.alexmerced.com)
+Author: Alex Merced (https://alexmerced.com)
 Last updated: 2026-09-28
 
 ${section('Definition', [
@@ -50,6 +51,12 @@ ${section('Architecture', [
 ${articles.length} in-depth reference pages, indexed at ${BASE}/knowledge-base
 
 ${layerBlocks.join('\n')}
+### Example implementations by Alex Merced
+
+Alex Merced's own projects appear here only as examples. Their full pages live on alexmercedai.com.
+
+${exampleImplementations.map((entry) => `- [${entry.name}](${entry.href}): ${entry.summary}`).join('\n')}
+
 ### The openness test
 
 Six properties that determine whether an architecture is genuinely open.
@@ -73,8 +80,8 @@ ${section('Books', [
 ${section('Network', [
   'This site is part of the Alex Merced network:',
   '',
-  '- https://www.alexmercedai.com : Alex Merced on agentic AI, with its own knowledge base.',
-  '- https://www.alexmerced.com : canonical identity and router to the rest of the network.',
+  '- https://alexmercedai.com : Alex Merced\'s open-source agent tools and specs, with full project pages.',
+  '- https://alexmerced.com : canonical identity and router to the rest of the network.',
   '- https://agenticlakehouse.com : agentic AI over the lakehouse.',
   '- https://opendatalakehouse.com : open lakehouse architecture.',
   '- https://semanticlakehouse.com : semantic modeling over open tables.',
