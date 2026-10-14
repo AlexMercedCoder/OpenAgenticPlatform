@@ -28,5 +28,7 @@ export type Article = {
   sections: ArticleSection[];
   learnMore: LearnMoreLink[];
   related: string[];
+  /** ISO date of the last substantive edit, used as dateModified. Defaults to the original publish date. */
+  updated?: string;
   Body: () => ReactNode;
 };

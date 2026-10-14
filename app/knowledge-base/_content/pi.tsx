@@ -32,6 +32,7 @@ export const article: Article = {
     { label: 'Model Context Protocol', href: 'https://modelcontextprotocol.io', note: 'The connection standard most harnesses use to reach tools without hard-coding integrations.' },
   ],
   related: ['harnesses-and-brokers', 'opencode', 'agent-skills'],
+  updated: '2026-10-13',
   Body,
 };
 

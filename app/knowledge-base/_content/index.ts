@@ -21,9 +21,17 @@ import { article as opencode } from './opencode';
 import { article as pi } from './pi';
 import { article as hermesAgent } from './hermes-agent';
 import { article as primeAgent } from './prime-agent';
+import { article as claudeCode } from './claude-code';
+import { article as codexCli } from './codex-cli';
+import { article as geminiCli } from './gemini-cli';
+import { article as aider } from './aider';
+import { article as cline } from './cline';
+import { article as goose } from './goose';
+import { article as langgraph } from './langgraph';
 
 import { article as agentSkills } from './agent-skills';
 import { article as modelContextProtocol } from './model-context-protocol';
+import { article as agent2agentProtocol } from './agent2agent-protocol';
 
 import { article as replaceable } from './replaceable';
 import { article as inspectable } from './inspectable';
@@ -56,9 +64,17 @@ export const articles: Article[] = [
   pi,
   hermesAgent,
   primeAgent,
+  claudeCode,
+  codexCli,
+  geminiCli,
+  aider,
+  cline,
+  goose,
+  langgraph,
 
   agentSkills,
   modelContextProtocol,
+  agent2agentProtocol,
 
   replaceable,
   inspectable,

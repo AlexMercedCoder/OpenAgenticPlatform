@@ -32,6 +32,7 @@ export const article: Article = {
     { label: 'Model Context Protocol', href: 'https://modelcontextprotocol.io', note: 'The alternative approach to tool access, worth contrasting with a code-first interface.' },
   ],
   related: ['harnesses-and-brokers', 'pi', 'opencode'],
+  updated: '2026-10-13',
   Body,
 };
 

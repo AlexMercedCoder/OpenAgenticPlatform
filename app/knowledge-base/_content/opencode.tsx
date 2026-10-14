@@ -33,6 +33,7 @@ export const article: Article = {
     { label: 'Language Server Protocol', href: 'https://microsoft.github.io/language-server-protocol/', note: 'Background on the protocol that gives a coding agent real symbol knowledge.' },
   ],
   related: ['harnesses-and-brokers', 'agent-skills', 'pi'],
+  updated: '2026-10-13',
   Body,
 };
 

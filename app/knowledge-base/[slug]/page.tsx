@@ -7,6 +7,7 @@ import { SiteHeader } from '../../_components/SiteHeader';
 import { NewsletterBand, SiteFooter } from '../../_components/SiteFooter';
 import { articles, articlesBySlug } from '../_content';
 import { getNetwork } from '../../_lib/network';
+import { HarnessScorecard } from '../../_components/HarnessScorecard';
 
 const kindLabel: Record<string, string> = {
   layer: 'Layer',
@@ -62,7 +63,7 @@ export default async function KnowledgeBaseArticle({ params }: { params: Promise
         isPartOf: { '@type': 'WebSite', '@id': 'https://openagenticplatform.com/#website' },
         author: { '@id': 'https://alexmerced.com/#alexmerced' },
         publisher: { '@type': 'Organization', name: 'Open Agentic Platform', url: 'https://openagenticplatform.com/' },
-        dateModified: '2026-09-28',
+        dateModified: article.updated ?? '2026-09-28',
         keywords: article.keywords.join(', '),
       },
       {
@@ -79,6 +80,7 @@ export default async function KnowledgeBaseArticle({ params }: { params: Promise
   };
 
   const Body = article.Body;
+  const showScorecard = article.kind === 'technology' && article.layer === 'harnesses-and-brokers';
 
   return (
     <main>
@@ -106,12 +108,15 @@ export default async function KnowledgeBaseArticle({ params }: { params: Promise
               {article.sections.map((section) => (
                 <li key={section.id}><a href={`#${section.id}`}>{section.label}</a></li>
               ))}
+              {showScorecard ? <li><a href="#openness-scorecard">Openness scorecard</a></li> : null}
               <li><a href="#learn-more">Where to learn more</a></li>
             </ol>
           </aside>
 
           <div className="kb-prose">
             <Body />
+
+            {showScorecard ? <HarnessScorecard name={article.title} /> : null}
 
             <section className="kb-learn-more" id="learn-more">
               <h2>Where to learn more</h2>

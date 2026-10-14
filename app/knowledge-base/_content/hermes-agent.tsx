@@ -33,6 +33,7 @@ export const article: Article = {
     { label: 'Agent Skills', href: 'https://agentskills.io', note: 'The portable capability format Hermes Agent supports.' },
   ],
   related: ['harnesses-and-brokers', 'nous-portal', 'agent-skills'],
+  updated: '2026-10-13',
   Body,
 };
 

@@ -125,7 +125,7 @@
 .kb-table th{background:var(--ink);color:#fff;font:9px var(--mono);letter-spacing:.1em;text-transform:uppercase}
 .kb-table-scroll{overflow-x:auto;margin-bottom:28px}
 .kb-table-scroll .kb-table{margin-bottom:0;min-width:520px}
-.kb-learn-more,.kb-related{margin-top:70px;padding-top:36px;border-top:1px solid var(--ink)}
+.kb-learn-more,.kb-related,.kb-scorecard{margin-top:70px;padding-top:36px;border-top:1px solid var(--ink)}
 .kb-learn-more ul,.kb-related ul{list-style:none;padding:0;display:grid;gap:0}
 .kb-learn-more li,.kb-related li{display:grid;gap:6px;padding:18px 0;border-bottom:1px solid #c7c3b8}
 .kb-learn-more li a,.kb-related li a{font:800 15px Arial,Helvetica,sans-serif;border-bottom:0;width:max-content;max-width:100%}
