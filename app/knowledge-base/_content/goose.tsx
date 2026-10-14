@@ -2,7 +2,7 @@ import type { Article } from './types';
 
 export const article: Article = {
   slug: 'goose',
-  title: 'goose',
+  title: 'goose (AI agent)',
   kind: 'technology',
   layer: 'harnesses-and-brokers',
   kicker: 'HARNESSES AND BROKERS / GENERAL-PURPOSE AGENT',
