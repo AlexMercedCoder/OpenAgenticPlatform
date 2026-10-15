@@ -61,7 +61,7 @@ export function contentDates(...files: string[]): ContentDates {
   let published: string | undefined;
   let modified: string | undefined;
   for (const file of files) {
-    if (!existsSync(path.join(root, file))) continue;
+    if (!existsSync(path.join(/*turbopackIgnore: true*/ root, file))) continue;
     const rows = fileLog(file); // newest first
     if (!rows.length) continue;
     const first = rows[rows.length - 1].date;

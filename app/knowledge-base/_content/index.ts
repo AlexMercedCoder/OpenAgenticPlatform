@@ -28,6 +28,9 @@ import { article as aider } from './aider';
 import { article as cline } from './cline';
 import { article as goose } from './goose';
 import { article as langgraph } from './langgraph';
+import { article as crewai } from './crewai';
+import { article as cursor } from './cursor';
+import { article as zed } from './zed';
 
 import { article as agentSkills } from './agent-skills';
 import { article as modelContextProtocol } from './model-context-protocol';
@@ -70,7 +73,10 @@ export const articles: Article[] = [
   aider,
   cline,
   goose,
+  cursor,
+  zed,
   langgraph,
+  crewai,
 
   agentSkills,
   modelContextProtocol,
