@@ -22,6 +22,8 @@ export type Article = {
   kicker: string;
   /** One sentence used as the meta description and the card blurb. */
   summary: string;
+  /** Meta description (140 to 160 characters) when the summary is too short or long for search. */
+  description?: string;
   /** A short standfirst shown under the title. */
   standfirst: string;
   keywords: string[];

@@ -6,6 +6,56 @@ import { NewsletterBand, SiteFooter } from './_components/SiteFooter';
 import { aiBooks, bookPage } from './_data/books';
 import { kbManifest } from './_data/kb-manifest';
 import { layers, tests } from './_data/stack';
+import { contentDates } from './_lib/content-dates';
+
+const BASE = 'https://openagenticplatform.com';
+const ALEX = { '@id': 'https://alexmerced.com/#alexmerced' };
+// The reference architecture is the homepage copy plus the stack data it renders.
+const dates = contentDates('app/page.tsx', 'app/_data/stack.ts');
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'TechArticle',
+      '@id': `${BASE}/#reference-architecture`,
+      headline: 'Open Agentic Platform Reference Architecture',
+      description: 'A four-layer architecture spanning data and semantics, models and routing, harnesses and brokers, and open standards.',
+      url: `${BASE}/`,
+      mainEntityOfPage: `${BASE}/`,
+      isPartOf: { '@id': `${BASE}/#website` },
+      author: ALEX,
+      ...(dates.published ? { datePublished: dates.published, dateModified: dates.modified } : {}),
+      inLanguage: 'en-US',
+    },
+    {
+      '@type': 'ItemList',
+      '@id': `${BASE}/#layers`,
+      name: 'Open agentic platform layers',
+      numberOfItems: layers.length,
+      itemListElement: layers.map((layer, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: layer.title,
+        url: `${BASE}/knowledge-base/${layer.slug}`,
+      })),
+    },
+    {
+      '@type': 'VideoObject',
+      '@id': `${BASE}/#open-the-stack-video`,
+      name: 'Open the Stack',
+      description: 'A beat-synced visual manifesto for building composable AI from open data, models, execution layers, and portable standards.',
+      thumbnailUrl: `${BASE}/open-the-stack-poster.jpg`,
+      uploadDate: '2026-09-02T00:00:00-04:00',
+      duration: 'PT7M37.3S',
+      contentUrl: `${BASE}/open-the-stack.mp4`,
+      embedUrl: `${BASE}/#anthem`,
+      author: ALEX,
+      publisher: ALEX,
+      inLanguage: 'en-US',
+    },
+  ],
+};
 
 export default function Home() {
   return <main>
@@ -51,5 +101,6 @@ export default function Home() {
 
     <NewsletterBand />
     <SiteFooter />
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
   </main>;
 }

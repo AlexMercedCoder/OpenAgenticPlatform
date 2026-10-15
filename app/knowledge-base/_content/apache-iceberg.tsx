@@ -7,6 +7,7 @@ export const article: Article = {
   layer: 'data-and-semantics',
   kicker: 'DATA AND SEMANTICS / TABLE FORMAT',
   summary: 'The table format that turns a collection of files in object storage into something that behaves like a database table, with atomic commits, schema evolution, and history.',
+  description: "The table format that turns files in object storage into something that behaves like a database table, with atomic commits, schema evolution, and history.",
   standfirst: 'Files are not a table. Iceberg is the metadata layer that adds the behavior people assume a table has: safe concurrent writes, schema changes that do not rewrite history, partitioning that can change, and a record of what the table looked like at any past moment.',
   keywords: ['Apache Iceberg', 'open table format', 'lakehouse', 'time travel', 'schema evolution', 'hidden partitioning', 'REST catalog'],
   sections: [

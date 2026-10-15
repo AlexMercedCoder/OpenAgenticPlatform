@@ -7,6 +7,7 @@ export const article: Article = {
   layer: 'harnesses-and-brokers',
   kicker: 'HARNESSES AND BROKERS / TERMINAL AGENT',
   summary: 'Google\'s open source terminal agent for Gemini models, with built-in file, shell, web fetch, and Google Search tools, MCP support, GEMINI.md context files, and a free tier.',
+  description: "Google's open source terminal agent for Gemini models, with file, shell, web fetch, and Google Search tools, MCP support, GEMINI.md files, and a free tier.",
   standfirst: 'Gemini CLI is an Apache 2.0 licensed agent built around one model family. Its open source loop and MCP support make it a readable harness; its tie to Gemini models is the replaceability question to weigh.',
   keywords: ['Gemini CLI', 'Google Gemini', 'terminal agent', 'coding agent', 'GEMINI.md', 'MCP', 'Google Search grounding', 'open source AI agent'],
   sections: [

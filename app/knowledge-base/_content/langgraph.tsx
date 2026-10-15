@@ -7,6 +7,7 @@ export const article: Article = {
   layer: 'harnesses-and-brokers',
   kicker: 'HARNESSES AND BROKERS / ORCHESTRATION FRAMEWORK',
   summary: 'An MIT-licensed, low-level framework for building stateful agents as graphs of nodes and edges, with checkpointed state, durable execution, and human-in-the-loop interrupts.',
+  description: "An MIT-licensed, low-level framework for building stateful agents as graphs of nodes and edges, with checkpointed state, durable execution, and human review.",
   standfirst: 'LangGraph is not an agent you install and talk to. It is a library for building your own harness, where the agent loop is an explicit graph you define, and where state is saved at each step so runs can pause, resume, and be inspected.',
   keywords: ['LangGraph', 'LangChain', 'agent framework', 'stateful agents', 'agent orchestration', 'StateGraph', 'human in the loop', 'durable execution', 'multi-agent'],
   sections: [

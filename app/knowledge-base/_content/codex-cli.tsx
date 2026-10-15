@@ -7,6 +7,7 @@ export const article: Article = {
   layer: 'harnesses-and-brokers',
   kicker: 'HARNESSES AND BROKERS / CODING HARNESS',
   summary: 'OpenAI\'s open source coding agent that runs locally in a terminal, with explicit sandbox and approval settings, AGENTS.md instructions, MCP tools, and optional local models.',
+  description: "OpenAI's open source coding agent for the terminal, with explicit sandbox and approval settings, AGENTS.md instructions, MCP tools, and optional local models.",
   standfirst: 'Codex CLI is an Apache 2.0 licensed harness from a model provider. Its most instructive feature for an open architecture is how plainly it separates what the agent may touch (the sandbox) from when it must ask (the approval policy).',
   keywords: ['Codex CLI', 'OpenAI Codex', 'coding agent', 'terminal agent', 'AGENTS.md', 'agent sandbox', 'approval policy', 'MCP', 'open source coding agent'],
   sections: [

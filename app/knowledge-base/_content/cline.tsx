@@ -7,6 +7,7 @@ export const article: Article = {
   layer: 'harnesses-and-brokers',
   kicker: 'HARNESSES AND BROKERS / CODING HARNESS',
   summary: 'An open source coding agent for the IDE, terminal, and desktop that asks approval for every file edit and command, separates planning from acting, and works with many model providers.',
+  description: "An open source coding agent for IDE, terminal, and desktop that asks approval for each edit and command, separates plan from act, and supports many providers.",
   standfirst: 'Cline is an Apache 2.0 licensed coding agent best known as a VS Code extension. Its defining choice is human approval at each step, with Plan and Act modes and checkpoints that make every change reversible.',
   keywords: ['Cline', 'VS Code AI agent', 'coding agent', 'Plan and Act', 'human in the loop', 'MCP', '.clinerules', 'checkpoints', 'open source coding agent'],
   sections: [

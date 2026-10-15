@@ -7,6 +7,7 @@ export const article: Article = {
   layer: 'harnesses-and-brokers',
   kicker: 'HARNESSES AND BROKERS / LONG-RUNNING AGENT',
   summary: 'An open source coding and research agent for long-running autonomous work, built around a persistent Python environment and a harness state that refines itself over time.',
+  description: "An open source coding and research agent for long-running autonomous work, built on a persistent Python environment and a harness state that refines itself.",
   standfirst: 'Prime Agent is designed for work that outlasts a conversation. Its tool interface is a persistent Python session rather than a fixed tool list, its sessions survive a disconnected terminal, and it can update its own operating notes based on what it learned.',
   keywords: ['Prime Agent', 'Prime Intellect', 'autonomous agent', 'self-improving agent', 'persistent REPL', 'subagents', 'long-running tasks'],
   sections: [

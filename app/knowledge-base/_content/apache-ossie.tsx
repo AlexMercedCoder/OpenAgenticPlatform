@@ -7,6 +7,7 @@ export const article: Article = {
   layer: 'data-and-semantics',
   kicker: 'DATA AND SEMANTICS / SEMANTIC METADATA',
   summary: 'An incubating Apache project defining a vendor-neutral, declarative standard for semantic metadata, so metrics and dimensions are defined once and used consistently everywhere.',
+  description: "An incubating Apache project defining a vendor-neutral, declarative standard for semantic metadata, so metrics and dimensions are defined once, used everywhere.",
   standfirst: 'Storage formats made data portable. Meaning stayed trapped inside whichever tool defined it. Ossie is an effort to make the semantic layer itself an open, declarative artifact rather than a feature of a BI product.',
   keywords: ['Apache Ossie', 'semantic layer', 'semantic metadata standard', 'metric definitions', 'metric drift', 'AI grounding', 'headless BI'],
   sections: [

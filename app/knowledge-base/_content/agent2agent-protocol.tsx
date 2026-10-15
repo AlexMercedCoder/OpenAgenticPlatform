@@ -7,6 +7,7 @@ export const article: Article = {
   layer: 'open-standards',
   kicker: 'OPEN STANDARDS / AGENT INTEROPERABILITY',
   summary: 'An open standard, originally from Google and now at the Linux Foundation, for AI agents to discover each other and work together through Agent Cards, tasks, messages, and artifacts.',
+  description: "An open standard, first from Google and now at the Linux Foundation, for AI agents to discover each other and work together through Agent Cards and tasks.",
   standfirst: 'MCP connects an agent to tools and data. A2A connects an agent to other agents, including ones built by different teams on different frameworks, without either side exposing its internals.',
   keywords: ['A2A', 'Agent2Agent', 'Agent2Agent Protocol', 'agent interoperability', 'Agent Card', 'multi-agent', 'Linux Foundation', 'A2A vs MCP'],
   sections: [

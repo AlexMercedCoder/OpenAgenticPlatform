@@ -8,6 +8,7 @@ import { NewsletterBand, SiteFooter } from '../../_components/SiteFooter';
 import { articles, articlesBySlug } from '../_content';
 import { getNetwork } from '../../_lib/network';
 import { HarnessScorecard } from '../../_components/HarnessScorecard';
+import { contentDates, latest } from '../../_lib/content-dates';
 
 const kindLabel: Record<string, string> = {
   layer: 'Layer',
@@ -27,17 +28,17 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const url = `https://openagenticplatform.com/knowledge-base/${article.slug}`;
   return {
     title: article.title,
-    description: article.summary,
+    description: article.description ?? article.summary,
     keywords: article.keywords,
     alternates: { canonical: `/knowledge-base/${article.slug}` },
     openGraph: {
       title: `${article.title} | Open Agentic Platform`,
-      description: article.summary,
+      description: article.description ?? article.summary,
       url,
       type: 'article',
       images: [{ url: '/og.png', width: 1200, height: 630, alt: article.title }],
     },
-    twitter: { card: 'summary_large_image', site: getNetwork().twitterSite, title: article.title, description: article.summary, images: ['/og.png'] },
+    twitter: { card: 'summary_large_image', site: getNetwork().twitterSite, title: article.title, description: article.description ?? article.summary, images: ['/og.png'] },
   };
 }
 
@@ -49,6 +50,7 @@ export default async function KnowledgeBaseArticle({ params }: { params: Promise
   const parent = article.layer ? articlesBySlug.get(article.layer) : null;
   const related = article.related.map((entry) => articlesBySlug.get(entry)).filter((entry) => entry !== undefined);
   const url = `https://openagenticplatform.com/knowledge-base/${article.slug}`;
+  const dates = contentDates(`app/knowledge-base/_content/${article.slug}.tsx`);
 
   const structuredData = {
     '@context': 'https://schema.org',
@@ -63,7 +65,8 @@ export default async function KnowledgeBaseArticle({ params }: { params: Promise
         isPartOf: { '@type': 'WebSite', '@id': 'https://openagenticplatform.com/#website' },
         author: { '@id': 'https://alexmerced.com/#alexmerced' },
         publisher: { '@type': 'Organization', name: 'Open Agentic Platform', url: 'https://openagenticplatform.com/' },
-        dateModified: article.updated ?? '2026-09-28',
+        ...(dates.published ? { datePublished: dates.published } : {}),
+        dateModified: latest(dates.modified, article.updated) ?? '2026-09-28',
         keywords: article.keywords.join(', '),
       },
       {

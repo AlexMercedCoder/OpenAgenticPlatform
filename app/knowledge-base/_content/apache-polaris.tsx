@@ -7,6 +7,7 @@ export const article: Article = {
   layer: 'data-and-semantics',
   kicker: 'DATA AND SEMANTICS / CATALOG',
   summary: 'An open catalog for Iceberg tables that resolves names, enforces access, and hands out scoped credentials, which makes it the natural control point for agent data access.',
+  description: "An open catalog for Iceberg tables that resolves names, enforces access, and hands out scoped credentials: the natural control point for agent data access.",
   standfirst: 'A table format says what a table is. A catalog says which tables exist, who may touch them, and hands out the credentials to do so. Polaris is an open implementation of that role, and it is the piece that decides whether agent access to data is governable or scattered.',
   keywords: ['Apache Polaris', 'Iceberg REST catalog', 'data catalog', 'credential vending', 'RBAC', 'catalog federation', 'lakehouse governance'],
   sections: [

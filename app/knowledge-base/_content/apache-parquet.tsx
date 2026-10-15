@@ -7,6 +7,7 @@ export const article: Article = {
   layer: 'data-and-semantics',
   kicker: 'DATA AND SEMANTICS / FORMAT',
   summary: 'The columnar file format that most analytical data sits in, designed to be small on disk and cheap to scan selectively.',
+  description: "Apache Parquet is the columnar file format most analytical data sits in, designed to be small on disk and cheap to scan selectively, a few columns at a time.",
   standfirst: 'Parquet is where analytical data lives when nothing is reading it. It is a file format built on one insight: if you store values of the same column together, you can compress them far better and skip far more of the file when answering a question.',
   keywords: ['Apache Parquet', 'columnar file format', 'predicate pushdown', 'row groups', 'compression', 'lakehouse storage'],
   sections: [

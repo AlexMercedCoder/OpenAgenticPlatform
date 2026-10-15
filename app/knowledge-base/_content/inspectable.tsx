@@ -7,6 +7,7 @@ export const article: Article = {
   layer: null,
   kicker: 'OPENNESS TEST / 02',
   summary: 'Whether a builder can understand what runs and why, without adding instrumentation first or guessing from behavior.',
+  description: "The inspectable openness test: can a builder understand what an agentic system runs and why, without adding instrumentation first or guessing from behavior?",
   standfirst: 'Agentic systems fail in ways ordinary software does not. There is rarely a stack trace pointing at a line, only a sequence of individually reasonable steps that added up to something wrong. Reading that sequence is the only reliable way to improve the system, which makes inspectability a working requirement rather than a virtue.',
   keywords: ['observability', 'agent tracing', 'debugging agents', 'transparency', 'agent logs', 'inspectable systems'],
   sections: [

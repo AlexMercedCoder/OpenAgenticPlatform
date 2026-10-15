@@ -8,10 +8,11 @@ import { MAX_SCORE, SCORECARD_URL, bands, opennessTests } from '../_data/opennes
 import Scorecard from './Scorecard';
 
 const TITLE = 'Openness scorecard: score your agentic AI stack';
-const DESCRIPTION = 'Score any agentic AI stack on six openness tests (replaceable, inspectable, portable, bounded, grounded, auditable), 0 to 2 each, with evidence. Runs in your browser; download JSON or print.';
+const DESCRIPTION = 'Score any agentic AI stack on six openness tests, from replaceable to auditable, 0 to 2 each with evidence. Runs in your browser; download JSON or print.';
 
 export const metadata: Metadata = {
-  title: TITLE,
+  // absolute: the site suffix would push this past 60 characters.
+  title: { absolute: TITLE },
   description: DESCRIPTION,
   alternates: { canonical: '/openness-scorecard' },
   openGraph: {

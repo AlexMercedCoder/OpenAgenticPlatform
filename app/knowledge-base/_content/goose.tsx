@@ -7,6 +7,7 @@ export const article: Article = {
   layer: 'harnesses-and-brokers',
   kicker: 'HARNESSES AND BROKERS / GENERAL-PURPOSE AGENT',
   summary: 'An open source, general-purpose agent that runs on your machine as a desktop app, CLI, or API, extends itself through MCP, and works with 15+ model providers. Now governed under the Agentic AI Foundation.',
+  description: "An open source, general-purpose agent that runs locally as a desktop app, CLI, or API, extends itself through MCP, and is governed by the Agentic AI Foundation.",
   standfirst: 'goose began at Block and is now part of the Agentic AI Foundation at the Linux Foundation. It is a useful reference for an agent that is built on open standards from the inside: its extensions are MCP servers, and its repeatable workflows are portable YAML recipes.',
   keywords: ['goose', 'goose AI agent', 'Block goose', 'Agentic AI Foundation', 'AAIF', 'MCP extensions', 'goose recipes', 'open source AI agent', 'local AI agent'],
   sections: [

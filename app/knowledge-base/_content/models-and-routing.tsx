@@ -7,6 +7,7 @@ export const article: Article = {
   layer: null,
   kicker: '02 / INTELLIGENCE',
   summary: 'The layer where capability enters the system, and where the choice of model stays a choice rather than a dependency.',
+  description: "Models and routing: the layer where capability enters an agentic system, and how routing keeps the choice of model a choice rather than a dependency.",
   standfirst: 'This layer supplies reasoning and generation. Its architectural job is not to pick the best model, because there is no single best model. Its job is to keep the choice open, so that task, cost, latency, policy, and deployment constraints can each be answered separately.',
   keywords: ['open weight models', 'model routing', 'LLM selection', 'inference deployment', 'OpenRouter', 'local inference', 'provider APIs'],
   sections: [
